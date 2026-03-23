@@ -1,0 +1,46 @@
+{
+  "task_id": "thinkgeo_154",
+  "query": "Count the total distance between two zebra crossing using GSD 0.7 m/px.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\1.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\1.png",
+        "text": "zebra crossing",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "sqrt(((315+343)/2 - (530+555)/2)**2 + ((81+112)/2 - (135+171)/2)**2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "223.19181489708407 * 0.7"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The total distance between the two zebra crossings is approximately 156.23 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "156.23"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the distance within a range (between 140.61 and 171.85 meters)?",
+      "answer": "Yes"
+    }
+  ]
+}

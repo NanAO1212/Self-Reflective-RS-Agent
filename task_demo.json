@@ -1,0 +1,15 @@
+{
+  "task_id": "demo_001",
+  "query": "Describe the scene in this remote sensing image.",
+  "steps": [
+    {
+      "tool_name": "ImageDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg"
+      }
+    }
+  ],
+  "final_answer": "",
+  "outputs": []
+}

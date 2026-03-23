@@ -1,0 +1,54 @@
+{
+  "task_id": "thinkgeo_416",
+  "query": "Segment all small vehicles, convert their pixel areas to square meters with GSD = 0.127671143642 m/px, and compute by what percentage the larger footprint exceeds the smaller.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0526.png",
+  "steps": [
+    {
+      "tool_name": "SegmentObjectPixels",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0526.png",
+        "text": "small-vehicle",
+        "flag": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "536 * (0.127671143642**2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "699 * (0.127671143642**2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(11.39 - 8.74) / 8.74 * 100"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The larger vehicle footprint exceeds the smaller by approximately **30.34%**.",
+  "gsd_m_per_px": 0.127671143642,
+  "gt_answer": {
+    "whitelist": [
+      [
+        "30.34%"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the computed percentage difference between the larger and smaller vehicle footprints within the acceptable range of 27.31% to 33.37%?",
+      "answer": "Yes"
+    }
+  ]
+}

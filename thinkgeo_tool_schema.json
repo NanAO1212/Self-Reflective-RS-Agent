@@ -1,0 +1,411 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "thinkgeo.tools.schema",
+  "title": "ThinkGeo Tool Wrapper Schema",
+  "type": "object",
+  "required": [
+    "tool_name",
+    "tool_type",
+    "input",
+    "raw_output",
+    "parsed",
+    "meta"
+  ],
+  "properties": {
+    "tool_name": {
+      "type": "string",
+      "enum": [
+        "Calculator",
+        "GoogleSearch",
+        "Plot",
+        "Solver",
+        "OCR",
+        "DrawBox",
+        "AddText",
+        "RegionAttributeDescription",
+        "SegmentObjectPixels",
+        "ObjectDetection",
+        "ChangeDetection",
+        "ImageDescription",
+        "TextToBbox",
+        "CountGivenObject"
+      ]
+    },
+    "tool_type": {
+      "type": "string",
+      "enum": [
+        "perception",
+        "logic",
+        "operation"
+      ]
+    },
+    "input": { "$ref": "#/$defs/ToolInput" },
+    "raw_output": {
+      "type": ["string", "integer", "number", "object"]
+    },
+    "parsed": { "$ref": "#/$defs/ToolParsed" },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "spatial": { "$ref": "#/$defs/Spatial" },
+    "meta": { "$ref": "#/$defs/Meta" }
+  },
+  "$defs": {
+    "ImagePath": {
+      "type": "string",
+      "description": "Image file path"
+    },
+    "BBoxString": {
+      "type": "string",
+      "pattern": "^\\(\\s*\\d+(\\.\\d+)?\\s*,\\s*\\d+(\\.\\d+)?\\s*,\\s*\\d+(\\.\\d+)?\\s*,\\s*\\d+(\\.\\d+)?\\s*\\)$",
+      "description": "(x1, y1, x2, y2)"
+    },
+    "Spatial": {
+      "type": "object",
+      "properties": {
+        "bboxes_px": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": { "type": "number" }
+          }
+        },
+        "mask_area_px": { "type": ["number", "null"] },
+        "gsd_m_per_px": { "type": ["number", "null"] },
+        "area_m2": { "type": ["number", "null"] },
+        "distance_m": { "type": ["number", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "Meta": {
+      "type": "object",
+      "properties": {
+        "image_id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "warnings": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolInput": {
+      "oneOf": [
+        { "$ref": "#/$defs/TextToBboxInput" },
+        { "$ref": "#/$defs/ObjectDetectionInput" },
+        { "$ref": "#/$defs/CountGivenObjectInput" },
+        { "$ref": "#/$defs/SegmentObjectPixelsInput" },
+        { "$ref": "#/$defs/RegionAttributeDescriptionInput" },
+        { "$ref": "#/$defs/ImageDescriptionInput" },
+        { "$ref": "#/$defs/ChangeDetectionInput" },
+        { "$ref": "#/$defs/OCRInput" },
+        { "$ref": "#/$defs/CalculatorInput" },
+        { "$ref": "#/$defs/SolverInput" },
+        { "$ref": "#/$defs/PlotInput" },
+        { "$ref": "#/$defs/DrawBoxInput" },
+        { "$ref": "#/$defs/AddTextInput" },
+        { "$ref": "#/$defs/GoogleSearchInput" }
+      ]
+    },
+    "ToolParsed": {
+      "oneOf": [
+        { "$ref": "#/$defs/TextToBboxParsed" },
+        { "$ref": "#/$defs/ObjectDetectionParsed" },
+        { "$ref": "#/$defs/CountGivenObjectParsed" },
+        { "$ref": "#/$defs/SegmentObjectPixelsParsed" },
+        { "$ref": "#/$defs/RegionAttributeDescriptionParsed" },
+        { "$ref": "#/$defs/ImageDescriptionParsed" },
+        { "$ref": "#/$defs/ChangeDetectionParsed" },
+        { "$ref": "#/$defs/OCRParsed" },
+        { "$ref": "#/$defs/CalculatorParsed" },
+        { "$ref": "#/$defs/SolverParsed" },
+        { "$ref": "#/$defs/PlotParsed" },
+        { "$ref": "#/$defs/DrawBoxParsed" },
+        { "$ref": "#/$defs/AddTextParsed" },
+        { "$ref": "#/$defs/GoogleSearchParsed" }
+      ]
+    },
+    "TextToBboxInput": {
+      "type": "object",
+      "required": ["image", "text"],
+      "properties": {
+        "image": { "$ref": "#/$defs/ImagePath" },
+        "text": { "type": "string" },
+        "top1": { "type": "boolean", "default": true }
+      },
+      "additionalProperties": false
+    },
+    "TextToBboxParsed": {
+      "type": "object",
+      "properties": {
+        "bboxes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["bbox_px", "score"],
+            "properties": {
+              "bbox_px": {
+                "type": "array",
+                "minItems": 4,
+                "maxItems": 4,
+                "items": { "type": "number" }
+              },
+              "score": { "type": "number", "minimum": 0, "maximum": 1 }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ObjectDetectionInput": {
+      "type": "object",
+      "required": ["image"],
+      "properties": {
+        "image": { "$ref": "#/$defs/ImagePath" }
+      },
+      "additionalProperties": false
+    },
+    "ObjectDetectionParsed": {
+      "type": "object",
+      "properties": {
+        "detections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "bbox_px", "score"],
+            "properties": {
+              "label": { "type": "string" },
+              "bbox_px": {
+                "type": "array",
+                "minItems": 4,
+                "maxItems": 4,
+                "items": { "type": "number" }
+              },
+              "score": { "type": "number", "minimum": 0, "maximum": 1 }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "CountGivenObjectInput": {
+      "type": "object",
+      "required": ["image", "text"],
+      "properties": {
+        "image": { "$ref": "#/$defs/ImagePath" },
+        "text": { "type": "string" },
+        "bbox": { "$ref": "#/$defs/BBoxString" }
+      },
+      "additionalProperties": false
+    },
+    "CountGivenObjectParsed": {
+      "type": "object",
+      "properties": {
+        "count": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "SegmentObjectPixelsInput": {
+      "type": "object",
+      "required": ["image", "text"],
+      "properties": {
+        "image": { "$ref": "#/$defs/ImagePath" },
+        "text": { "type": "string" },
+        "flag": { "type": "boolean", "default": true }
+      },
+      "additionalProperties": false
+    },
+    "SegmentObjectPixelsParsed": {
+      "type": "object",
+      "properties": {
+        "pixel_counts": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0 }
+        },
+        "sum": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "RegionAttributeDescriptionInput": {
+      "type": "object",
+      "required": ["image", "bbox", "attribute"],
+      "properties": {
+        "image": { "$ref": "#/$defs/ImagePath" },
+        "bbox": { "$ref": "#/$defs/BBoxString" },
+        "attribute": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "RegionAttributeDescriptionParsed": {
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "ImageDescriptionInput": {
+      "type": "object",
+      "required": ["image"],
+      "properties": {
+        "image": { "$ref": "#/$defs/ImagePath" }
+      },
+      "additionalProperties": false
+    },
+    "ImageDescriptionParsed": {
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "ChangeDetectionInput": {
+      "type": "object",
+      "required": ["text", "pre_image", "post_image"],
+      "properties": {
+        "text": { "type": "string" },
+        "pre_image": { "$ref": "#/$defs/ImagePath" },
+        "post_image": { "$ref": "#/$defs/ImagePath" }
+      },
+      "additionalProperties": false
+    },
+    "ChangeDetectionParsed": {
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "OCRInput": {
+      "type": "object",
+      "required": ["image"],
+      "properties": {
+        "image": { "$ref": "#/$defs/ImagePath" }
+      },
+      "additionalProperties": false
+    },
+    "OCRParsed": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["bbox_px", "text"],
+            "properties": {
+              "bbox_px": {
+                "type": "array",
+                "minItems": 4,
+                "maxItems": 4,
+                "items": { "type": "number" }
+              },
+              "text": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "CalculatorInput": {
+      "type": "object",
+      "required": ["expression"],
+      "properties": {
+        "expression": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "CalculatorParsed": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "SolverInput": {
+      "type": "object",
+      "required": ["command"],
+      "properties": {
+        "command": { "type": "string", "description": "Python code in markdown" }
+      },
+      "additionalProperties": false
+    },
+    "SolverParsed": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "PlotInput": {
+      "type": "object",
+      "required": ["command"],
+      "properties": {
+        "command": { "type": "string", "description": "Python code in markdown" }
+      },
+      "additionalProperties": false
+    },
+    "PlotParsed": {
+      "type": "object",
+      "properties": {
+        "image_path": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "DrawBoxInput": {
+      "type": "object",
+      "required": ["image", "bbox"],
+      "properties": {
+        "image": { "$ref": "#/$defs/ImagePath" },
+        "bbox": { "$ref": "#/$defs/BBoxString" },
+        "annotation": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "DrawBoxParsed": {
+      "type": "object",
+      "properties": {
+        "image_path": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "AddTextInput": {
+      "type": "object",
+      "required": ["image", "text", "position"],
+      "properties": {
+        "image": { "$ref": "#/$defs/ImagePath" },
+        "text": { "type": "string" },
+        "position": {
+          "type": "string",
+          "description": "(x,y) or one of lt,lm,lb,mt,mm,mb,rt,rm,rb"
+        },
+        "color": { "type": "string", "default": "red" }
+      },
+      "additionalProperties": false
+    },
+    "AddTextParsed": {
+      "type": "object",
+      "properties": {
+        "image_path": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "GoogleSearchInput": {
+      "type": "object",
+      "required": ["query"],
+      "properties": {
+        "query": { "type": "string" },
+        "k": { "type": "integer", "default": 10 }
+      },
+      "additionalProperties": false
+    },
+    "GoogleSearchParsed": {
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

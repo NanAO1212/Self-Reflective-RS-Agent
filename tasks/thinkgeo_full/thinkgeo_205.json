@@ -1,0 +1,45 @@
+{
+  "task_id": "thinkgeo_205",
+  "query": "Estimate the combined surface area of the basketball courts in square meter assuming 1.1m GSD.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\133.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\133.jpg",
+        "text": "basketball court",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((423-259)*(350-248) + (536-433)*(381-233))*1.1*1.1"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Approximately 38,686.12 square meters",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "38686.12",
+        "38686",
+        "38686.0"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are the estimated combined surface area values of the basketball courts within the acceptable range of 34,817.51 to 42,554.73 square meters?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the combined surface area of the basketball courts reported in square meters?",
+      "answer": "Yes"
+    }
+  ]
+}

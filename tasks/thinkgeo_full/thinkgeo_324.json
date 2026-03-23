@@ -1,0 +1,39 @@
+{
+  "task_id": "thinkgeo_324",
+  "query": "Locate construction waste and estimate the total area it covers using 0.5 meters per pixel (GSD).",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\70019.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\70019.jpg",
+        "text": "construction waste",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((1024-870)*(1024-638) + (778-678)*(1024-574)) * 0.5 * 0.5"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The total area covered by the construction waste is approximately 88,475 square meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "88475"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the estimated total area covered by construction waste within the acceptable range of 79,628 to 97,323 square meters?",
+      "answer": "Yes"
+    }
+  ]
+}

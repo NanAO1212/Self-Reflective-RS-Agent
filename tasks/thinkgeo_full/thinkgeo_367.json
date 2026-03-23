@@ -1,0 +1,49 @@
+{
+  "task_id": "thinkgeo_367",
+  "query": "Assuming each fully destroyed building sheltered four households, estimate how many families are now displaced and require emergency lodging.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000003_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000003_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000003_post_disaster.png",
+        "text": "How many buildings destroyed in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "1 * 4"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Estimated displaced families requiring emergency lodging: **4**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000003_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000003_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "4"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there 4 displaced families requiring emergency lodging according to the response?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response indicate that each fully destroyed building housed four households resulting in the estimate of 4 displaced families?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the estimated number of displaced families exactly four?",
+      "answer": "Yes"
+    }
+  ]
+}

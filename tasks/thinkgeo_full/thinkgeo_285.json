@@ -1,0 +1,47 @@
+{
+  "task_id": "thinkgeo_285",
+  "query": "Could you identify the parking lot located south of the tennis courts and specify the directional orientation of its entrance using cardinal or intercardinal points (e.g., north, northwest, etc.)?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "text": "parking lot south of tennis courts",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "bbox": "(430,770,725,970)",
+        "attribute": "entrance direction of parking lot"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The entrance of the parking lot located south of the tennis courts is oriented towards the east.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "east",
+        "E",
+        "right"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the response referring to the parking lot located immediately south of the tennis courts?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response state that the entrance of this parking lot is oriented towards the east?",
+      "answer": "Yes"
+    }
+  ]
+}

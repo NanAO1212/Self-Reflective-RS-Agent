@@ -1,0 +1,28 @@
+{
+  "task_id": "thinkgeo_8",
+  "query": "Draw a box over a house that is close to water body other than flood and swimming pool.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7605.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7605.jpg",
+        "text": "house near canal",
+        "top1": true
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7605.jpg",
+        "bbox": "(2203.0, 223.0, 2834.0, 840.0)",
+        "annotation": "house near water body"
+      }
+    }
+  ],
+  "final_answer": ""
+}

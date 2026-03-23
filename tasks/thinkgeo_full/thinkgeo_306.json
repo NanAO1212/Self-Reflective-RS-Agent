@@ -1,0 +1,55 @@
+{
+  "task_id": "thinkgeo_306",
+  "query": "Evaluate how close the domestic garbage site is to playgrounds and whether it violates safety thresholds (assume 50m), assume 0.5m gsd.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40000.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40000.jpg",
+        "text": "domestic garbage",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40000.jpg",
+        "text": "playground",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((((410+524)/2 - (288+533)/2)**2 + ((119+204)/2 - (594+971)/2)**2)**0.5) * 0.5"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The domestic garbage site is approximately 207.77 meters away from the playground, so it does not violate the 50-meter safety threshold.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "207.77"
+      ],
+      [
+        "does not violate"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the computed distance between the domestic garbage site and the playground within the acceptable range of 187 to 229 meters?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response conclude that the distance does not violate the 50-meter safety threshold?",
+      "answer": "Yes"
+    }
+  ]
+}

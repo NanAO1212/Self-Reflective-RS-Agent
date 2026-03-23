@@ -1,0 +1,56 @@
+{
+  "task_id": "thinkgeo_309",
+  "query": "Determine if the domestic garbage is close enough to active crop zone in northeast to pose a contamination risk, assuming less than 50m is at high risk, with 0.5m gsd.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40009.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40009.jpg",
+        "text": "domestic garbage",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40009.jpg",
+        "text": "northeast crop",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((570 - 490)**2 + (499 - 480)**2)**0.5 * 0.5"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The domestic garbage is approximately 41.23 meters from the active crop zone, which poses a high contamination risk (distance < 50 meters).",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "41.23"
+      ],
+      [
+        "high risk",
+        "no"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the domestic garbage located within the range of 37.11 to 45.35 meters from the active crop zone?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response state that this distance is less than 50 meters, thereby posing a high contamination risk?",
+      "answer": "Yes"
+    }
+  ]
+}

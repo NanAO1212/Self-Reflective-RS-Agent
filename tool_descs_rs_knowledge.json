@@ -1,0 +1,106 @@
+﻿{
+  "TextToBbox": {
+    "rs_knowledge": {
+      "scene_priors": {
+        "ship": ["water", "port", "harbor", "coast"],
+        "airplane": ["airport", "runway", "airfield"],
+        "car": ["urban", "road", "parking"],
+        "building": ["urban", "industrial", "residential"],
+        "farm": ["agriculture", "field"],
+        "bridge": ["urban", "water"]
+      },
+      "size_priors_m": {
+        "car": [2.0, 6.0],
+        "ship": [30.0, 400.0],
+        "airplane": [10.0, 80.0],
+        "building": [5.0, 200.0]
+      },
+      "common_confusions": [
+        "building vs ship in bright rooftops",
+        "road vs river in narrow linear features",
+        "parking lot vs water in low-contrast images"
+      ],
+      "gsd_rules": [
+        "meters = pixels * gsd_m_per_px",
+        "area_m2 = pixel_area * gsd_m_per_px^2"
+      ],
+      "validation_checks": [
+        "bbox must be within image bounds",
+        "bbox aspect ratio should be reasonable",
+        "bbox size should align with gsd-based priors"
+      ]
+    }
+  },
+  "ObjectDetection": {
+    "rs_knowledge": {
+      "scene_priors": {
+        "ship": ["water", "port", "harbor", "coast"],
+        "airplane": ["airport", "runway", "airfield"],
+        "car": ["urban", "road", "parking"],
+        "building": ["urban", "industrial", "residential"]
+      },
+      "size_priors_m": {
+        "car": [2.0, 6.0],
+        "ship": [30.0, 400.0],
+        "airplane": [10.0, 80.0],
+        "building": [5.0, 200.0]
+      },
+      "common_confusions": [
+        "ship vs building on coast",
+        "airplane vs warehouse",
+        "vehicle vs small rooftop objects"
+      ],
+      "validation_checks": [
+        "deduplicate near-identical boxes",
+        "check density vs image area",
+        "confirm scene consistency with ImageDescription"
+      ]
+    }
+  },
+  "CountGivenObject": {
+    "rs_knowledge": {
+      "density_checks": [
+        "count should be plausible given bbox area",
+        "large counts should trigger segmentation validation"
+      ],
+      "common_confusions": [
+        "cars vs small storage containers",
+        "boats vs white roofs in ports"
+      ]
+    }
+  },
+  "SegmentObjectPixels": {
+    "rs_knowledge": {
+      "gsd_rules": [
+        "area_m2 = pixel_count * gsd_m_per_px^2"
+      ],
+      "validation_checks": [
+        "pixel count must be non-negative",
+        "mask area should not exceed image area"
+      ]
+    }
+  },
+  "ImageDescription": {
+    "rs_knowledge": {
+      "scene_labels": [
+        "urban", "industrial", "agriculture", "forest", "water", "airport", "desert", "snow"
+      ],
+      "validation_checks": [
+        "description should mention dominant landcover",
+        "use key landmarks to support object claims"
+      ]
+    }
+  },
+  "ChangeDetection": {
+    "rs_knowledge": {
+      "temporal_rules": [
+        "verify changes with segmentation or counting",
+        "avoid claims without visual evidence"
+      ],
+      "validation_checks": [
+        "pre/post alignment sanity",
+        "quantify change with gsd if area is requested"
+      ]
+    }
+  }
+}

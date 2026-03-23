@@ -1,0 +1,44 @@
+{
+  "task_id": "thinkgeo_24",
+  "query": "Calculate the area of the largest flooded house and share the area in square meters. (GSD = 0.015 m/px)",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7543.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7543.jpg",
+        "text": "largest flooded house",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(732 - 265) * (3061 - 2358) * 0.015 * 0.015"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The area of the largest flooded house is approximately 1033.65 square meters.",
+  "gsd_m_per_px": 0.015,
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1033.65"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the computed area within the acceptable range of 930.285 to 1137.015 square meters?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response specify the area of the largest flooded house in square meters?",
+      "answer": "Yes"
+    }
+  ]
+}

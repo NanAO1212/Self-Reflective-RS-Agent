@@ -1,0 +1,46 @@
+{
+  "task_id": "thinkgeo_147",
+  "query": "Identify the destroyed building and draw box on each of them",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731467_36667689.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731467_36667689.jpg",
+        "text": "destroyed building",
+        "top1": false
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731467_36667689.jpg",
+        "bbox": "(256, 229, 404, 387)",
+        "annotation": "destroyed building"
+      }
+    },
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731467_36667689.jpg",
+        "bbox": "(375, 333, 467, 500)",
+        "annotation": "destroyed building"
+      }
+    },
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731467_36667689.jpg",
+        "bbox": "(522, 588, 678, 774)",
+        "annotation": "destroyed building"
+      }
+    }
+  ],
+  "final_answer": ""
+}

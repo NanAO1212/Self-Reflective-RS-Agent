@@ -1,0 +1,49 @@
+{
+  "task_id": "thinkgeo_333",
+  "query": "Detect both the domestic garbage and the bridge, and estimate the centroid-based distance between them in meters (assuming GSD = 0.5m/px).",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\70036.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\70036.jpg",
+        "text": "domestic garbage",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\70036.jpg",
+        "text": "bridge",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((((901+954)/2 - (304+459)/2)**2 + ((138+236)/2 - (645+711)/2)**2)**0.5) * 0.5"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The estimated distance between the domestic garbage and the bridge is approximately 324.17 meters.",
+  "gsd_m_per_px": 0.5,
+  "gt_answer": {
+    "whitelist": [
+      [
+        "324.17"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported distance between the domestic garbage and the bridge within the range of 291.75 to 356.59 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

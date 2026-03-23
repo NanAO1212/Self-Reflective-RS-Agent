@@ -1,0 +1,120 @@
+{
+  "task_id": "thinkgeo_141",
+  "query": "Detect planes with red body (fuselage), and compute distance between them, assuming GSD 1.5m/px.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0046.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0046.png",
+        "text": "plane",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0046.png",
+        "bbox": "(374, 10, 486, 89)",
+        "attribute": "fuselage color"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0046.png",
+        "bbox": "(363, 150, 483, 270)",
+        "attribute": "fuselage color"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0046.png",
+        "bbox": "(728, 41, 812, 126)",
+        "attribute": "fuselage color"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0046.png",
+        "bbox": "(705, 162, 817, 258)",
+        "attribute": "fuselage color"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0046.png",
+        "bbox": "(699, 290, 817, 376)",
+        "attribute": "fuselage color"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0046.png",
+        "bbox": "(690, 421, 788, 491)",
+        "attribute": "fuselage color"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0046.png",
+        "bbox": "(684, 534, 808, 627)",
+        "attribute": "fuselage color"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((728 + 812) / 2), round((41 + 126) / 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((699 + 817) / 2), round((290 + 376) / 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((((770 - 758) ** 2 + (84 - 333) ** 2) ** 0.5) * 1.5)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The distance between the two planes with red bodies is approximately 375 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "375"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly two planes with red bodies detected in the image?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the computed distance between the two red-bodied planes within the acceptable range of 338 to 413 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

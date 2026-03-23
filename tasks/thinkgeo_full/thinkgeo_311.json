@@ -1,0 +1,28 @@
+{
+  "task_id": "thinkgeo_311",
+  "query": "Detect the domestic garbage and draw box over it",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40012.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40012.jpg",
+        "text": "domestic garbage",
+        "top1": true
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40012.jpg",
+        "bbox": "(626, 314, 674, 362)",
+        "label": "domestic garbage"
+      }
+    }
+  ],
+  "final_answer": ""
+}

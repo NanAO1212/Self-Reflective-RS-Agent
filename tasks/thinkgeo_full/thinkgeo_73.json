@@ -1,0 +1,41 @@
+{
+  "task_id": "thinkgeo_73",
+  "query": "Detect the building that is near to volcanic mud activity, is it damaged or no-damage?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000009_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000009_post_disaster.png",
+        "text": "building near volcanic mud activity",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000009_post_disaster.png",
+        "bbox": "(350.0, 682.0, 434.0, 752.0)",
+        "attribute": "damage level"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The detected building with bbox (350, 682, 434, 752) is no-damage.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "no-damage building"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the detected building classified as no-damage in the response?",
+      "answer": "Yes"
+    }
+  ]
+}

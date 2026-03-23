@@ -1,0 +1,53 @@
+{
+  "task_id": "thinkgeo_260",
+  "query": "Using a ground sampling distance (GSD) of 0.522 meters per pixel, how many commercial aircraft are located within a 100-meter vicinity of the airplane with a yellow body?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0161.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0161.png",
+        "text": "airplane with yellow body",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "100 / 0.522"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0161.png",
+        "text": "commercial aircraft",
+        "bbox": "(1515, 747, 1989, 1197)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 5 commercial aircraft currently present within the 100-meter expanded box, one of which is the yellow airplane itself. Therefore, there are 4 other commercial aircraft.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "4",
+        "four"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly four commercial aircraft located within a 100-meter vicinity of the yellow-body airplane?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response's count of 4 refer only to other aircraft, excluding the yellow-body airplane itself?",
+      "answer": "Yes"
+    }
+  ]
+}

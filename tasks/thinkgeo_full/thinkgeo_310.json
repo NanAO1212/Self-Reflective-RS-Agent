@@ -1,0 +1,62 @@
+{
+  "task_id": "thinkgeo_310",
+  "query": "How many buildings are in between domestic and construction waste?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40010.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40010.jpg",
+        "text": "domestic garbage",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40010.jpg",
+        "text": "construction waste",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "min(145, 554), min(112, 223), max(217, 737), max(163, 419)"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40010.jpg",
+        "bbox": "(145, 112, 737, 419)",
+        "object": "house"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 8 buildings located in the area between the domestic garbage and construction waste.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "8 buildings",
+        "eight buildings"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 8 buildings located between domestic garbage and construction waste?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response reference the area between domestic garbage and construction waste as the location of the buildings?",
+      "answer": "Yes"
+    }
+  ]
+}

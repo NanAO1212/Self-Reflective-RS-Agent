@@ -1,0 +1,49 @@
+{
+  "task_id": "thinkgeo_379",
+  "query": "Calculate the ratio of the major damaged buildings in post image to the total buildings in post image.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000225_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000225_pre_disaster.png",
+        "text": "How many total buildings in the pre-disaster image."
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000225_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000225_post_disaster.png",
+        "text": "How many major damaged buildings in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "38 / 47"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Ratio of major damaged buildings to total buildings  **0.809**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000225_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000225_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "0.809"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are the major damaged buildings to total buildings ratio within the range 0.7281 to 0.8899 in the response?",
+      "answer": "Yes"
+    }
+  ]
+}

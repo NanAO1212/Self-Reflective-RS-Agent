@@ -1,0 +1,45 @@
+{
+  "task_id": "thinkgeo_272",
+  "query": "Identify the aircraft located on the flight deck and determine its heading direction in degrees relative to north.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0261.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0261.png",
+        "text": "aircraft on flight deck",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0261.png",
+        "bbox": "(459, 236, 535, 285)",
+        "attribute": "orientation of aircraft in degrees relative to north. "
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The aircraft is oriented on a heading of 120 degrees relative to north.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "120"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are the reported heading values of the aircraft within the acceptable range of 108 to 132 degrees?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response specify that this heading is measured relative to north?",
+      "answer": "Yes"
+    }
+  ]
+}

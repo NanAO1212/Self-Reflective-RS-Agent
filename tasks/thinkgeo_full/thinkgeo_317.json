@@ -1,0 +1,28 @@
+{
+  "task_id": "thinkgeo_317",
+  "query": "Locate the construction waste on the east side of the road and draw a bounding box over it.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40106.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40106.jpg",
+        "text": "construction waste",
+        "top1": true
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40106.jpg",
+        "bbox": "(575, 254, 854, 495)",
+        "label": "construction waste"
+      }
+    }
+  ],
+  "final_answer": ""
+}

@@ -1,0 +1,39 @@
+{
+  "task_id": "thinkgeo_320",
+  "query": "What is the distance between the domestic garbage and the waterbody (75,387) in the image, using 1 meter per pixel (GSD)?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\NI6947.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\NI6947.jpg",
+        "text": "domestic garbage",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((((4+146)/2 - 75)**2 + ((306+369)/2 - 387)**2)**0.5) * 1.0"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The distance between the domestic garbage and the waterbody is approximately 31.41 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "31.41"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported distance between the domestic garbage and the waterbody within 28.27 to 34.55 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

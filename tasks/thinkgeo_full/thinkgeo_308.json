@@ -1,0 +1,97 @@
+{
+  "task_id": "thinkgeo_308",
+  "query": "Quantify the area covered by agricultural forestry land vs. domestic waste, and report the percentage balance, with 0.5m gsd.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40005.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40005.jpg",
+        "text": "agriculture forestry",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40005.jpg",
+        "text": "domestic garbage",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((745-676)*(248-180)) * 0.5 * 0.5"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((344-173)*(97-44)) * 0.5 * 0.5"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((111-30)*(300-199)) * 0.5 * 0.5"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((1024-926)*(577-417)) * 0.5 * 0.5"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(1202.25 + 2137.75 + 2027.75 + 2450.0)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(1202.25 + 2137.75 + 2027.75) / 7817.75 * 100"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "2450.0 / 7817.75 * 100"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Agriculture forestry covers approximately 67.66% of the total area, while domestic garbage covers 31.34%.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "Agriculture forestry: 67.66"
+      ],
+      [
+        "Domestic garbage: 31.34"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported agriculture forestry coverage within the acceptable range of 61 % to 75 %?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the reported domestic garbage coverage within the acceptable range of 28 % to 35 %?",
+      "answer": "Yes"
+    }
+  ]
+}

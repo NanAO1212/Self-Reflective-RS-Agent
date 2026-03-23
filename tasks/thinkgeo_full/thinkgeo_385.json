@@ -1,0 +1,48 @@
+{
+  "task_id": "thinkgeo_385",
+  "query": "Which destroyed building has the largest estimated area in square meters? Given GSD=1.8769937",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000102_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000102_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000102_post_disaster.png",
+        "text": "Detect largest destroyed building in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\nfrom sympy import sympify\ndef solution():\n    return str(sympify('round((965-940)*(976-952) * (1.8769937**2), 2)'))\n```"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The destroyed building at [1, 282, 120, 383] has the largest estimated area of 2113.86 m.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000102_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000102_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "[1, 282, 120, 383]"
+      ],
+      [
+        "2113.86"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are all four coordinates of destroyed building within a 10% tolerance based on the bounding box size (x1 between 0 and 12.9, y1 between 271.9 and 292.1, x2 between 108.1 and 131.9, y2 between 372.9 and 393.1)?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the reported estimated area of the destroyed building within the acceptable range of 1902.47 to 2325.25 m?",
+      "answer": "Yes"
+    }
+  ]
+}

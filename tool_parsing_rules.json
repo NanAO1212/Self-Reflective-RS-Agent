@@ -1,0 +1,65 @@
+{
+  "version": "1.0",
+  "notes": "Regex-based parsing for ThinkGeo tool raw outputs. All patterns are anchored for typical outputs.",
+  "rules": {
+    "TextToBbox": {
+      "line_pattern": "\\((?P<x1>\\d+(?:\\.\\d+)?),\\s*(?P<y1>\\d+(?:\\.\\d+)?),\\s*(?P<x2>\\d+(?:\\.\\d+)?),\\s*(?P<y2>\\d+(?:\\.\\d+)?)\\),\\s*score\\s*(?P<score>\\d+(?:\\.\\d+)?)",
+      "score_scale": 0.01,
+      "output": "bboxes[]"
+    },
+    "ObjectDetection": {
+      "line_pattern": "(?P<label>.+?)\\s*\\((?P<x1>\\d+(?:\\.\\d+)?),\\s*(?P<y1>\\d+(?:\\.\\d+)?),\\s*(?P<x2>\\d+(?:\\.\\d+)?),\\s*(?P<y2>\\d+(?:\\.\\d+)?)\\),\\s*score\\s*(?P<score>\\d+(?:\\.\\d+)?)",
+      "score_scale": 0.01,
+      "output": "detections[]"
+    },
+    "OCR": {
+      "line_pattern": "\\((?P<x1>\\d+),\\s*(?P<y1>\\d+),\\s*(?P<x2>\\d+),\\s*(?P<y2>\\d+)\\)\\s*(?P<text>.+)$",
+      "output": "items[]"
+    },
+    "SegmentObjectPixels": {
+      "split_pattern": "\\s*,\\s*",
+      "output": "pixel_counts[]",
+      "sum": true
+    },
+    "CountGivenObject": {
+      "pattern": "(?P<count>\\d+)",
+      "output": "count"
+    },
+    "RegionAttributeDescription": {
+      "identity": true,
+      "output": "text"
+    },
+    "ImageDescription": {
+      "identity": true,
+      "output": "text"
+    },
+    "ChangeDetection": {
+      "identity": true,
+      "output": "text"
+    },
+    "Calculator": {
+      "identity": true,
+      "output": "value"
+    },
+    "Solver": {
+      "identity": true,
+      "output": "value"
+    },
+    "Plot": {
+      "identity": true,
+      "output": "image_path"
+    },
+    "DrawBox": {
+      "identity": true,
+      "output": "image_path"
+    },
+    "AddText": {
+      "identity": true,
+      "output": "image_path"
+    },
+    "GoogleSearch": {
+      "identity": true,
+      "output": "text"
+    }
+  }
+}

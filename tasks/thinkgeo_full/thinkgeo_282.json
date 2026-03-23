@@ -1,0 +1,80 @@
+{
+  "task_id": "thinkgeo_282",
+  "query": "Within this aerial image, describe the directional orientation (yaw/heading) of all plane instances?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "text": "airplanes",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "bbox": "(983,2009,1267,2250)",
+        "attribute": "direction of the airplane"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "bbox": "(403,2019,692,2282)",
+        "attribute": "direction of the airplane"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "bbox": "(406,1755,690,2013)",
+        "attribute": "direction of the airplane"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "bbox": "(954,255,1104,373)",
+        "attribute": "direction of the airplane"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "bbox": "(529,241,863,487)",
+        "attribute": "direction of the airplane"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Three planes are facing west, and two planes are facing north.",
+  "gt_answer": [
+    "Three planes are facing west, and two planes are facing north."
+  ],
+  "evaluation": [
+    {
+      "question": "Are three planes indicated as facing west or right in the response?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are two planes indicated as facing north or top in the response?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response specify the orientation for all five plane instances in the image?",
+      "answer": "Yes"
+    }
+  ]
+}

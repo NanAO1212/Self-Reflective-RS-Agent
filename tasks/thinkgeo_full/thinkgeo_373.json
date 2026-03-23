@@ -1,0 +1,55 @@
+{
+  "task_id": "thinkgeo_373",
+  "query": "Describe the change in the pre and post images. How many buildings are majorly damaged in the post image? Estimate the total number of displaced households if each damaged building belongs to two families.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000384_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000384_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000384_post_disaster.png",
+        "text": "Describe the changes observed between the pre- and post-disaster images."
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000384_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000384_post_disaster.png",
+        "text": "How many buildings are majorly damaged in the post-disaster image?"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "42 * 2"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Overview of changes: Extensive structural damage across multiple buildings, collapsed roofs, and flooding.\n Majorly damaged buildings: **42**.\n Estimated displaced households: **84**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000384_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000384_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "42",
+        "84"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the number of majorly damaged buildings within the acceptable range of 37.8 to 46.2?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the estimated displaced households within the acceptable range of 75.6 to 92.4?",
+      "answer": "Yes"
+    }
+  ]
+}

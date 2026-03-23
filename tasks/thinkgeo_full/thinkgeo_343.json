@@ -1,0 +1,48 @@
+{
+  "task_id": "thinkgeo_343",
+  "query": "How many completely destroyed buildings lie in the upper half of the image compared to those in the lower half?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_post_disaster.png",
+        "text": "How many destroyed buildings are in the upper half of the post-disaster image?"
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_post_disaster.png",
+        "text": "How many destroyed buildings are in the lower half of the post-disaster image?"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Destroyed buildings in upper half: **1**.\n Destroyed buildings in lower half: **4**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1",
+        "4"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 1 completely destroyed building in the upper half of the image?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are there exactly 4 completely destroyed buildings in the lower half of the image?",
+      "answer": "Yes"
+    }
+  ]
+}

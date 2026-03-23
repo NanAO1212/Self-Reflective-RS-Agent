@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "self_reflective_agent.io.schema",
+  "title": "Self-Reflective Agent I/O",
+  "type": "object",
+  "required": ["image", "question"],
+  "properties": {
+    "image": { "type": "string" },
+    "question": { "type": "string" },
+    "pre_image": { "type": "string" },
+    "post_image": { "type": "string" }
+  }
+}

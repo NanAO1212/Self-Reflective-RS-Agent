@@ -1,0 +1,62 @@
+{
+  "task_id": "thinkgeo_330",
+  "query": "Detect construction waste and garbage waste and determine each of the waste average areas using 0.5m GSD.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40115.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40115.jpg",
+        "text": "construction waste",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40115.jpg",
+        "text": "domestic garbage",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(((494-393)*(323-152) + (165-83)*(469-358) + (108-6)*(658-569)) * 0.5 * 0.5) / 3"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(((490-431)*(791-688) + (801-685)*(176-131)) * 0.5 * 0.5) / 2"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The average area per region is approximately 6654.17 square meters for construction waste and 2868.75 square meters for domestic garbage, based on 0.5m GSD.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "6654.17"
+      ],
+      [
+        "2868.75"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the average area for construction waste within the acceptable range of 5988.75 to 7319.59 square meters?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the average area for domestic garbage within the acceptable range of 2581.88 to 3155.62 square meters?",
+      "answer": "Yes"
+    }
+  ]
+}

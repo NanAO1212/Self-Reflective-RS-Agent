@@ -1,0 +1,41 @@
+{
+  "task_id": "thinkgeo_384",
+  "query": "If each destroyed building requires a 30-minute structural survey, what is the total surveying time needed for all the destroyed buildings?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000102_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000102_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000102_post_disaster.png",
+        "text": "How many buildings destroyed in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "6 * 30"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Total surveying time needed: **180 minutes** (3 hours).",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000102_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000102_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "180 minutes"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the total surveying time within the acceptable range of 162 to 198 minutes?",
+      "answer": "Yes"
+    }
+  ]
+}

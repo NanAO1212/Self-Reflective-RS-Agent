@@ -1,0 +1,39 @@
+{
+  "task_id": "thinkgeo_85",
+  "query": "Identify two damaged buildings with white rooftop, and estimate distance between them. Using GSD 3.02px/m.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000185_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000185_post_disaster.png",
+        "text": "damaged building with white rooftop",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(((379+424)/2 - (6+40)/2)**2 + ((690+733)/2 - (351+403)/2)**2)**0.5 / 3.02"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The estimated distance between the two damaged white-roof buildings is approximately 165.85 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "165.85"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is distance within the range of 149.265 m to 182.435 m?",
+      "answer": "Yes"
+    }
+  ]
+}

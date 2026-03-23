@@ -1,0 +1,90 @@
+{
+  "task_id": "thinkgeo_69",
+  "query": "Please tell which year santa-rosa wildfire happened and share count of building with their status in this image.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000273_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "GoogleSearch",
+      "tool_type": "logic",
+      "input": {
+        "query": "Santa Rosa wildfire year"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000273_post_disaster.png",
+        "text": "destroyed building"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000273_post_disaster.png",
+        "text": "major-damage building"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000273_post_disaster.png",
+        "text": "minor-damage building"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000273_post_disaster.png",
+        "text": "no-damage building"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000273_post_disaster.png",
+        "text": "unclassified building"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The Santa Rosa wildfire, also known as the Tubbs Fire, occurred in 2017. In this image, there are 9 destroyed buildings, 1 major-damage building, 0 minor-damage buildings, 2 no-damage buildings, and 1 unclassified building.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "2017"
+      ],
+      [
+        "destroyed: 9"
+      ],
+      [
+        "no-damage: 2"
+      ],
+      [
+        "major-damage: 1"
+      ],
+      [
+        "un-classified: 1"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the year of the Santa Rosa wildfire stated as 2017?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are there 9 destroyed buildings present in the image?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are there exactly 2 no-damage buildings identified in the response?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "task_id": "thinkgeo_267",
+  "query": "How many total tennis courts are there and is the tennis court closest to parking area at top left occupied?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0194.png",
+  "steps": [
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0194.png",
+        "text": "tennis courts"
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0194.png",
+        "text": "tennis court closest to parking lot at top left",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0194.png",
+        "bbox": "(351, 276, 438, 452)",
+        "attribute": "players on the court"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 8 tennis courts visible and the tennis court closest to the parking area is not occupied.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "8",
+        "eight"
+      ],
+      [
+        "no",
+        "not occupied"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly eight tennis courts visible?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the tennis court closest to the parking area not occupied?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response specify both the total number of courts and the occupancy status of the court closest to the parking area?",
+      "answer": "Yes"
+    }
+  ]
+}

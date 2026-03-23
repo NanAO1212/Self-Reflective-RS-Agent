@@ -1,0 +1,57 @@
+{
+  "task_id": "thinkgeo_81",
+  "query": "Count number of buildings damaged due to hurricane-florence in Carolina in this image. Also estimate the total damage cost based on average house unit price.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000396_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000396_post_disaster.png",
+        "text": "building with major damage"
+      }
+    },
+    {
+      "tool_name": "GoogleSearch",
+      "tool_type": "logic",
+      "input": {
+        "query": "average house unit price in Carolina after hurricane florence"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "10 * 250000"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 10 buildings with major damage. Based on an average unit price of $250,000, the total estimated damage cost is $2,500,000.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "10 buildings",
+        "ten buildings"
+      ],
+      [
+        "2500000 damage cost"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 10 buildings with major damage present in the image?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the average unit price within the acceptable range of \\$225,000 to \\$275,000?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the total estimated damage cost of within the acceptable range of \\$2,250,000 to \\$2,750,000?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "task_id": "thinkgeo_337",
+  "query": "Which quadrant of the post-disaster image contains the most buildings that are *major-damage* or *destroyed*, and by how many does it exceed the quadrant with the next-highest count? Given: Image size 1024x1024.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_post_disaster.png",
+        "text": "Identify every building whose damage level is major-damage or destroyed in the POST image and return a parseable list of bounding boxes."
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    damaged_boxes=[(678, 304, 697, 322), (1006, 176, 1023, 199), (884, 675, 922, 708), (752, 299, 778, 318), (832, 489, 846, 504), (887, 509, 932, 541), (650, 949, 673, 967), (708, 860, 742, 891), (202, 63, 216, 78)]\n    return str(sum(1 for (x0,y0,_,_) in damaged_boxes if x0 < 1024/2 and y0 < 1024/2))\n```"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    damaged_boxes=[(678, 304, 697, 322), (1006, 176, 1023, 199), (884, 675, 922, 708), (752, 299, 778, 318), (832, 489, 846, 504), (887, 509, 932, 541), (650, 949, 673, 967), (708, 860, 742, 891), (202, 63, 216, 78)]\n    return str(sum(1 for (x0,y0,_,_) in damaged_boxes if x0 >= 1024/2 and y0 < 1024/2))\n```"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    damaged_boxes=[(678, 304, 697, 322), (1006, 176, 1023, 199), (884, 675, 922, 708), (752, 299, 778, 318), (832, 489, 846, 504), (887, 509, 932, 541), (650, 949, 673, 967), (708, 860, 742, 891), (202, 63, 216, 78)]\n    return str(sum(1 for (x0,y0,_,_) in damaged_boxes if x0 < 1024/2 and y0 >= 1024/2))\n```"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    damaged_boxes=[(678, 304, 697, 322), (1006, 176, 1023, 199), (884, 675, 922, 708), (752, 299, 778, 318), (832, 489, 846, 504), (887, 509, 932, 541), (650, 949, 673, 967), (708, 860, 742, 891), (202, 63, 216, 78)]\n    return str(sum(1 for (x0,y0,_,_) in damaged_boxes if x0 >= 1024/2 and y0 >= 1024/2))\n```"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "5 - 3"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The **top-right** has the most severely damaged buildings with **5**, exceeding the next-highest quadrant (bottom right) by **2 buildings**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "5"
+      ],
+      [
+        "2"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the top-right quadrant identified as having the highest number of major-damage or destroyed buildings?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the count of severely damaged buildings in the top-right quadrant equal to 5?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does this count exceed the next-highest quadrant (bottom right) by exactly 2 buildings?",
+      "answer": "Yes"
+    }
+  ]
+}

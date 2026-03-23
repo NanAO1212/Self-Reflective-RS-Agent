@@ -1,0 +1,41 @@
+{
+  "task_id": "thinkgeo_83",
+  "query": "Locate largest building damaged due to hurricane-harvey. Is there playground present in flood water around the building?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000127_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000127_post_disaster.png",
+        "text": "largest damaged building",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000127_post_disaster.png",
+        "bbox": "(237.0, 239.0, 762.0, 607.0)",
+        "attribute": "playground in flood water"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "No, there is no playground present in the flood water around the building.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "No"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Does the response state that there is no playground present in the flood water around the building?",
+      "answer": "Yes"
+    }
+  ]
+}

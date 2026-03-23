@@ -1,0 +1,22 @@
+{
+  "task_id": "thinkgeo_2",
+  "query": "Count the number of buildings directly attached to the cul de sac. Are these buildings flooded?",
+  "steps": [
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7584.jpg",
+        "text": "building",
+        "bbox": "(0, 0, 4592, 3072)"
+      }
+    },
+    {
+      "tool_name": "ImageDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7584.jpg"
+      }
+    }
+  ]
+}

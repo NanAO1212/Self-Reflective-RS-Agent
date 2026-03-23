@@ -1,0 +1,729 @@
+{
+  "TextToBbox": {
+    "tool": "TextToBbox",
+    "purpose": "在遥感图像中定位指定地物，输出像素坐标边界框。",
+    "inputs": {
+      "image": "图像路径（本地）",
+      "text": "地物类型/描述（如建筑物/道路/水体/船舶/飞机等）",
+      "top1": "是否仅返回置信度最高目标"
+    },
+    "outputs": {
+      "bbox_px": "(x1, y1, x2, y2) 像素坐标",
+      "score": "检测置信度"
+    },
+    "unit_rules": [
+      "所有边界框为像素单位",
+      "面积/距离需结合GSD换算：area_m2=(x2-x1)*(y2-y1)*GSD^2"
+    ],
+    "examples": [
+      {
+        "input": {
+          "image": "data/rs/scene_01.png",
+          "text": "???",
+          "top1": true
+        },
+        "output": {
+          "bbox_px": [
+            120,
+            80,
+            260,
+            190
+          ],
+          "score": 0.92
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???",
+        "bbox???????????"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "ObjectDetection": {
+    "tool": "ObjectDetection",
+    "purpose": "检测遥感图像中常见目标并输出类别与bbox。",
+    "inputs": {
+      "image": "图像路径（本地）"
+    },
+    "outputs": {
+      "label": "目标类别",
+      "bbox_px": "(x1, y1, x2, y2) 像素坐标",
+      "score": "检测置信度"
+    },
+    "unit_rules": [
+      "bbox为像素坐标",
+      "若用于面积/距离，需用GSD换算"
+    ],
+    "examples": [
+      {
+        "input": {
+          "image": "data/rs/scene_02.png"
+        },
+        "output": {
+          "label": "ship",
+          "bbox_px": [
+            34,
+            210,
+            98,
+            260
+          ],
+          "score": 0.88
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???",
+        "bbox???????????"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "CountGivenObject": {
+    "tool": "CountGivenObject",
+    "purpose": "统计指定区域内某类地物数量。",
+    "inputs": {
+      "image": "图像路径（本地）",
+      "text": "目标类别",
+      "bbox": "限定区域bbox (x1,y1,x2,y2)"
+    },
+    "outputs": {
+      "count": "数量（整数）"
+    },
+    "unit_rules": [
+      "bbox为像素坐标",
+      "计数结果为纯数量"
+    ],
+    "examples": [
+      {
+        "input": {
+          "image": "data/rs/scene_03.png",
+          "text": "car",
+          "bbox": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        "output": {
+          "count": 12
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???",
+        "bbox???????????"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "SegmentObjectPixels": {
+    "tool": "SegmentObjectPixels",
+    "purpose": "分割地物并返回像素面积（单目标或总和）。",
+    "inputs": {
+      "image": "图像路径（本地）",
+      "text": "地物类别/描述",
+      "flag": "true=返回每个目标像素数；false=总像素数"
+    },
+    "outputs": {
+      "pixel_counts": "像素面积列表或总和"
+    },
+    "unit_rules": [
+      "像素面积需用GSD换算成m2：area_m2=pixel_count*GSD^2"
+    ],
+    "examples": [
+      {
+        "input": {
+          "image": "data/rs/scene_04.png",
+          "text": "water",
+          "flag": false
+        },
+        "output": {
+          "pixel_counts": 15320
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)",
+        "???????????"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "RegionAttributeDescription": {
+    "tool": "RegionAttributeDescription",
+    "purpose": "描述指定区域的地表属性/语义。",
+    "inputs": {
+      "image": "图像路径（本地）",
+      "bbox": "区域bbox (x1,y1,x2,y2)",
+      "attribute": "属性类型（如地表类型/颜色/密度）"
+    },
+    "outputs": {
+      "text": "区域属性描述"
+    },
+    "unit_rules": [
+      "bbox为像素坐标"
+    ],
+    "examples": [
+      {
+        "input": {
+          "image": "data/rs/scene_05.png",
+          "bbox": [
+            50,
+            40,
+            220,
+            180
+          ],
+          "attribute": "landcover"
+        },
+        "output": {
+          "text": "mostly residential blocks with sparse vegetation"
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???",
+        "bbox???????????"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "ImageDescription": {
+    "tool": "ImageDescription",
+    "purpose": "输出整幅遥感图像场景级描述。",
+    "inputs": {
+      "image": "图像路径（本地）"
+    },
+    "outputs": {
+      "text": "场景描述"
+    },
+    "unit_rules": [],
+    "examples": [
+      {
+        "input": {
+          "image": "data/rs/scene_06.png"
+        },
+        "output": {
+          "text": "a coastal port with docks and several ships"
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "ChangeDetection": {
+    "tool": "ChangeDetection",
+    "purpose": "多时相变化分析，输出变化描述。",
+    "inputs": {
+      "text": "变化分析问题",
+      "pre_image": "时相1图像路径",
+      "post_image": "时相2图像路径"
+    },
+    "outputs": {
+      "text": "变化结果描述"
+    },
+    "unit_rules": [
+      "若涉及变化面积/数量需结合分割或计数工具 + GSD"
+    ],
+    "examples": [
+      {
+        "input": {
+          "text": "????????",
+          "pre_image": "data/rs/t1.png",
+          "post_image": "data/rs/t2.png"
+        },
+        "output": {
+          "text": "new buildings appear in the northeast; vegetation reduced near river"
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???",
+        "pre_image?post_image??????????????"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "OCR": {
+    "tool": "OCR",
+    "purpose": "识别遥感图像中的文字标注。",
+    "inputs": {
+      "image": "图像路径（本地）"
+    },
+    "outputs": {
+      "bbox_px": "(x1,y1,x2,y2) 像素坐标",
+      "text": "识别文字"
+    },
+    "unit_rules": [
+      "bbox为像素坐标"
+    ],
+    "examples": [
+      {
+        "input": {
+          "image": "data/rs/scene_07.png"
+        },
+        "output": {
+          "bbox_px": [
+            10,
+            20,
+            88,
+            50
+          ],
+          "text": "RUNWAY 09"
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???",
+        "bbox???????????"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "Calculator": {
+    "tool": "Calculator",
+    "purpose": "执行数值计算（面积/距离/比例/单位换算）。",
+    "inputs": {
+      "expression": "数学表达式"
+    },
+    "outputs": {
+      "value": "计算结果"
+    },
+    "unit_rules": [
+      "GSD换算：meters = pixels * GSD; area_m2 = pixels^2 * GSD^2"
+    ],
+    "examples": [
+      {
+        "input": {
+          "expression": "(260-120)*(190-80)*0.5*0.5"
+        },
+        "output": {
+          "value": 3850.0
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???",
+        "???/?????????????"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "Solver": {
+    "tool": "Solver",
+    "purpose": "使用符号计算解决公式推导问题。",
+    "inputs": {
+      "command": "Python/Sympy 代码"
+    },
+    "outputs": {
+      "value": "求解结果"
+    },
+    "unit_rules": [],
+    "examples": [
+      {
+        "input": {
+          "command": "from sympy import symbols, Eq, solve; x=symbols('x'); solve(Eq(2*x+3, 11))"
+        },
+        "output": {
+          "value": [
+            4
+          ]
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???",
+        "???/?????????????"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "Plot": {
+    "tool": "Plot",
+    "purpose": "生成统计图表作为多模态输出。",
+    "inputs": {
+      "command": "Python绘图代码"
+    },
+    "outputs": {
+      "image_path": "图像路径"
+    },
+    "unit_rules": [
+      "图中单位需明确标注（如 m, m2, 个数）"
+    ],
+    "examples": [
+      {
+        "input": {
+          "command": "import matplotlib.pyplot as plt\nplt.plot([1,2,3],[10,15,9]); plt.xlabel('time'); plt.ylabel('count')"
+        },
+        "output": {
+          "image_path": "outputs/plot_001.png"
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???",
+        "???/?????????????"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "DrawBox": {
+    "tool": "DrawBox",
+    "purpose": "在遥感图像上绘制边界框用于可视化。",
+    "inputs": {
+      "image": "图像路径（本地）",
+      "bbox": "目标bbox (x1,y1,x2,y2)",
+      "annotation": "文字标注"
+    },
+    "outputs": {
+      "image_path": "输出图像路径"
+    },
+    "unit_rules": [
+      "bbox为像素坐标"
+    ],
+    "examples": [
+      {
+        "input": {
+          "image": "data/rs/scene_08.png",
+          "bbox": [
+            120,
+            80,
+            260,
+            190
+          ],
+          "annotation": "building"
+        },
+        "output": {
+          "image_path": "outputs/scene_08_box.png"
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???",
+        "bbox???????????"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "DrawMask": {
+    "tool": "DrawMask",
+    "purpose": "Overlay a segmentation mask or polygon on the image for visualization.",
+    "inputs": {
+      "image": "image path (local)",
+      "mask_path": "optional: path to a mask image (grayscale or binary)",
+      "polygon": "optional: list of [x,y] polygon points",
+      "bbox": "optional: fallback rectangle (x1,y1,x2,y2)",
+      "color": "overlay color (e.g., red)",
+      "alpha": "overlay opacity in [0,1]"
+    },
+    "outputs": {
+      "image_path": "output image path"
+    },
+    "unit_rules": [
+      "bbox is in pixel coordinates",
+      "mask and image should have same size (mask will be resized if needed)"
+    ],
+    "examples": [
+      {
+        "input": {
+          "image": "data/rs/scene_08.png",
+          "bbox": [
+            120,
+            80,
+            260,
+            190
+          ],
+          "color": "red",
+          "alpha": 0.4
+        },
+        "output": {
+          "image_path": "outputs/scene_08_mask.png"
+        }
+      }
+    ]
+  },
+  "AddText": {
+    "tool": "AddText",
+    "purpose": "在图像上添加文字说明。",
+    "inputs": {
+      "image": "图像路径（本地）",
+      "text": "标注文字",
+      "position": "位置（像素或预定义方位）"
+    },
+    "outputs": {
+      "image_path": "输出图像路径"
+    },
+    "unit_rules": [],
+    "examples": [
+      {
+        "input": {
+          "image": "outputs/scene_08_box.png",
+          "text": "area=3850 m2",
+          "position": "top-left"
+        },
+        "output": {
+          "image_path": "outputs/scene_08_box_text.png"
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  },
+  "GoogleSearch": {
+    "tool": "GoogleSearch",
+    "purpose": "检索遥感领域知识用于辅助推理。",
+    "inputs": {
+      "query": "检索关键词"
+    },
+    "outputs": {
+      "text": "搜索结果摘要"
+    },
+    "unit_rules": [],
+    "examples": [
+      {
+        "input": {
+          "query": "remote sensing GSD definition"
+        },
+        "output": {
+          "text": "GSD is the ground distance represented by one pixel in an image"
+        }
+      }
+    ],
+    "validation": {
+      "input_rules": [
+        "????????????????????????",
+        "bbox???[x1,y1,x2,y2]?x1<x2,y1<y2",
+        "???????px???"
+      ],
+      "output_rules": [
+        "?????/???????????(m?m2)",
+        "???GSD??????GSD??(??/??/??)"
+      ],
+      "assumptions": [
+        "???????????????",
+        "????????????"
+      ],
+      "error_tolerance": {
+        "bbox_iou": 0.5,
+        "count_abs": 1,
+        "area_rel": 0.1,
+        "distance_rel": 0.1
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "task_id": "thinkgeo_344",
+  "query": "If a single response team can inspect 3 severely damaged sites per day, estimate how many days one team would need to cover all severely damaged buildings in this area.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_post_disaster.png",
+        "text": "How many severely damaged buildings (major-damage and destroyed) in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\nimport math\ndef solution():\n    return math.ceil(6 / 3)\n```"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "One team would need **2 days** to inspect all severely damaged buildings.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "2"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are exactly 2 days stated as the required inspection time in the response?",
+      "answer": "Yes"
+    }
+  ]
+}

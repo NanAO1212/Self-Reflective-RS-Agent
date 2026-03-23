@@ -1,0 +1,61 @@
+{
+  "task_id": "thinkgeo_359",
+  "query": "How many buildings are classified as destroyed in the post-event image, and what is the ratio of destroyed buildings to the total number of buildings?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000504_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000504_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000504_post_disaster.png",
+        "text": "How many buildings are classified as destroyed in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000504_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000504_post_disaster.png",
+        "text": "How many total buildings in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "1 / 14"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Destroyed buildings: **1**.\n Ratio of destroyed buildings to total buildings  **0.0714**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000504_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000504_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1"
+      ],
+      [
+        "0.0714"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 1 destroyed building reported in the response?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the ratio of destroyed buildings to total buildings reported as 0.0714?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the ratio correctly calculated and rounded to four decimal places?",
+      "answer": "Yes"
+    }
+  ]
+}

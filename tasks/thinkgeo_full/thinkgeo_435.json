@@ -1,0 +1,55 @@
+{
+  "task_id": "thinkgeo_435",
+  "query": "Segment all small vehicles, sum their pixel areas, convert to m-sq using GSD = 0.136569405667 m/px, and state what fraction of a hectare (10 000 m-sq) they cover.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1101.png",
+  "steps": [
+    {
+      "tool_name": "SegmentObjectPixels",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1101.png",
+        "text": "small-vehicles",
+        "flag": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "1111 * (0.136569405667**2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "20.729244646 / 10000"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Total pixel count for small vehicles: **1111** pixels.\nConverted area: approximately **20.73 m-sq**.\nFraction of a hectare (10 000 m-sq) covered: approximately **0.00207**.",
+  "gsd_m_per_px": 0.136569405667,
+  "gt_answer": {
+    "whitelist": [
+      [
+        "0.002"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are the total pixel count for small vehicles within the acceptable range of 999.9 to 1222.1 pixels?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the converted area within the acceptable range of 18.657 to 22.803 m-sq?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the fraction of a hectare covered equal approximately 0.002?",
+      "answer": "Yes"
+    }
+  ]
+}

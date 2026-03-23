@@ -1,0 +1,34 @@
+{
+  "task_id": "thinkgeo_354",
+  "query": "Count number of destroyed buildings in the post disaster image.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\palu-tsunami_00000032_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\palu-tsunami_00000032_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\palu-tsunami_00000032_post_disaster.png",
+        "text": "Count the destroyed buildings in the post disaster image."
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "60 buildings are destroyed in post disaster image",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\palu-tsunami_00000032_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\palu-tsunami_00000032_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "60"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported number of destroyed buildings within the acceptable range of 54 to 66?",
+      "answer": "Yes"
+    }
+  ]
+}

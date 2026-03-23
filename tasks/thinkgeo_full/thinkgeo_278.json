@@ -1,0 +1,49 @@
+{
+  "task_id": "thinkgeo_278",
+  "query": "Identify and count all aircraft visible on the apron. Compute the pairwise center to center distances between each airplane in meters (rounded to whole number), using the 0.0917 m/pixel resolution.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1138.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1138.png",
+        "text": "airplane on apron",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((((1964+2224)/2 - (92+277)/2)**2 + ((792+1100)/2 - (288+476)/2)**2)**0.5 * 0.0917)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 2 aircraft visible on the apron. The center-to-center distance between them is approximately 183 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "2",
+        "two"
+      ],
+      [
+        "183",
+        "183.0",
+        "183.00"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 2 aircraft visible on the apron?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the computed center-to-center distance between the two aircraft within the range of 164 to 201 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

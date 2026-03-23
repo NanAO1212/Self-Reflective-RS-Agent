@@ -1,0 +1,39 @@
+{
+  "task_id": "thinkgeo_328",
+  "query": "Estimate the straight-line distance between the domestic garbage region and the main road reference point (717, 642), assuming a ground sampling distance (GSD) of 0.5 meters per pixel.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40079.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40079.jpg",
+        "text": "domestic garbage",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((((726+990)/2 - 717)**2 + ((320+589)/2 - 642)**2)**0.5) * 0.5"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The estimated distance from the domestic garbage to the main road reference point is approximately 66.26 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "66.26"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the estimated distance between the domestic garbage region and the main road reference point within the acceptable range of 59.63 to 72.89 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

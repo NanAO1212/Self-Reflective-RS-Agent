@@ -1,0 +1,44 @@
+{
+  "task_id": "thinkgeo_225",
+  "query": "Compute distance between detected ships (using 0.8 GSD).",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\286.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\286.jpg",
+        "text": "ship",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(((470+554)/2-(780+843)/2)**2 + ((596+660)/2-(520+593)/2)**2)**0.5 * 0.8"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The distance between the two detected ships is approximately 246.88 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "246.88",
+        "246"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the stated distance within the range of 222.19 to 271.57 meters?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the result expressed in meters as required by the query?",
+      "answer": "Yes"
+    }
+  ]
+}

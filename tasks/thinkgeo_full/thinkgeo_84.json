@@ -1,0 +1,44 @@
+{
+  "task_id": "thinkgeo_84",
+  "query": "How many buildings are flooded? Locate the building near to road visible in the image.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000133_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000133_post_disaster.png",
+        "text": "flooded building"
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000133_post_disaster.png",
+        "text": "building near the road",
+        "top1": true
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 9 flooded buildings in the image. The building nearest to the road is located at (438, 322, 456, 351).",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "9 buildings",
+        "nine buildings"
+      ],
+      [
+        "(438, 322, 456, 351)"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 9 flooded buildings in the image?",
+      "answer": "Yes"
+    }
+  ]
+}

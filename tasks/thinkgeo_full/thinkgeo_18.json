@@ -1,0 +1,56 @@
+{
+  "task_id": "thinkgeo_18",
+  "query": "The white house in northwest corner of the image is flooded or not? is there any water around 10m radius of the house? (GSD = 0.015 m/px)",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7308.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7308.jpg",
+        "text": "white house",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "max(0, round((29 + 646) / 2 - 10 / 0.015)), max(0, round((8 + 374) / 2 - 10 / 0.015)), round((29 + 646) / 2 + 10 / 0.015), round((8 + 374) / 2 + 10 / 0.015)"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7308.jpg",
+        "bbox": "(0, 0, 1006, 748)",
+        "attribute": "presence of water around house"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Yes, the white house in the northwest corner of the image is surrounded by water within a 10-meter radius.",
+  "gsd_m_per_px": 0.015,
+  "gt_answer": {
+    "whitelist": [
+      [
+        "flooded"
+      ],
+      [
+        "Yes"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are you confirming that the white house is located in the northwest corner of the image?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response state that the white house is surrounded by water within a 10-meter radius?",
+      "answer": "Yes"
+    }
+  ]
+}

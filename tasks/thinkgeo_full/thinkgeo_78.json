@@ -1,0 +1,42 @@
+{
+  "task_id": "thinkgeo_78",
+  "query": "Due to hurricane, how much buildings are affected on right and left sides of road, plot the distribution.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ImageDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_post_disaster.png"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_post_disaster.png",
+        "text": "damaged building",
+        "bbox": "(0, 0, 1024, 1024)"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_post_disaster.png",
+        "text": "damaged building",
+        "bbox": "(0, 0, 1024, 1024)"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "Plot",
+      "tool_type": "operation",
+      "input": {
+        "command": "```python\nimport matplotlib.pyplot as plt\n\ndef solution():\n    sides = ['left', 'right']\n    counts = [0, 23]\n    fig = plt.figure(figsize=(6, 4))\n    plt.bar(sides, counts, color=['blue', 'orange'])\n    plt.title('Affected Buildings Distribution by Side of Road')\n    plt.xlabel('Side of Road')\n    plt.ylabel('Number of Damaged Buildings')\n    return fig\n```"
+      }
+    }
+  ],
+  "final_answer": ""
+}

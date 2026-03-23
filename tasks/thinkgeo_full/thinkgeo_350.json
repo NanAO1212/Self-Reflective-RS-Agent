@@ -1,0 +1,66 @@
+{
+  "task_id": "thinkgeo_350",
+  "query": "What is the average ground area of the no-damage buildings compared to those that were completely destroyed?  GSD = 1.8769937 m/pixel.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_post_disaster.png",
+        "text": "Identify all no-damage buildings in the POST image."
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_post_disaster.png",
+        "text": "Identify all destroyed buildings in the POST image."
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    no_damage_boxes=[(229, 776, 241, 790)]\n    return str(round(sum([(x1 - x0) * (y1 - y0) * 1.8769937**2 for (x0, y0, x1, y1) in no_damage_boxes]) / len(no_damage_boxes), 2))\n```"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    destroyed_boxes=[(168, 722, 235, 761), (150, 705, 194, 745), (407, 650, 459, 682), (464, 670, 473, 682), (0, 346, 15, 381)]\n    return str(round(sum([(x1-x0)*(y1-y0) for (x0,y0,x1,y1) in destroyed_boxes]) * (1.8769937**2) / len(destroyed_boxes), 2))\n```"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " **Average area of no-damage buildings:** 591.88 m sq.\n **Average area of destroyed buildings:** 4699.82 m sq.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "591.88",
+        "4699.82"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the average area of no-damage buildings within the acceptable range of 532.692 to 651.768 m sq?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the average area of destroyed buildings within the acceptable range of 4229.838 to 5169.802 m sq?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the average area reported for destroyed buildings higher than that for no-damage buildings?",
+      "answer": "Yes"
+    }
+  ]
+}

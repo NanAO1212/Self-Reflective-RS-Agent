@@ -1,0 +1,78 @@
+{
+  "task_id": "thinkgeo_283",
+  "query": "How many airplane instances have ground vehicles in close proximity?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "text": "airplanes",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "bbox": "(983,2009,1267,2250)",
+        "attribute": "presence of ground vehicle nearby"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "bbox": "(403,2019,692,2282)",
+        "attribute": "presence of ground vehicle nearby"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "bbox": "(406,1755,690,2013)",
+        "attribute": "presence of ground vehicle nearby"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "bbox": "(954,255,1104,373)",
+        "attribute": "presence of ground vehicle nearby"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "bbox": "(529,241,863,487)",
+        "attribute": "presence of ground vehicle nearby"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There is 1 airplane instances that have ground vehicles in close proximity.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1",
+        "one"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is there exactly one airplane instance with ground vehicles in close proximity?",
+      "answer": "Yes"
+    }
+  ]
+}

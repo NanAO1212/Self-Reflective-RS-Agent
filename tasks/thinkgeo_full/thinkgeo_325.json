@@ -1,0 +1,48 @@
+{
+  "task_id": "thinkgeo_325",
+  "query": "Detect the domestic garbage and the nearest building structure in the image, and estimate the centroid-to-centroid distance between them assuming a GSD of 0.5 meters per pixel.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40039.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40039.jpg",
+        "text": "domestic garbage",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40039.jpg",
+        "text": "building near domestic garbage",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((((755+899)/2 - (382+749)/2)**2 + ((414+550)/2 - (259+487)/2)**2)**0.5) * 0.5"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The estimated distance between the domestic garbage and the nearby building is approximately 111.98 meters based on centroid positions.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "111.98"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are the estimated distance between the domestic garbage and the nearby building within the acceptable range of 100.78 to 123.18 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

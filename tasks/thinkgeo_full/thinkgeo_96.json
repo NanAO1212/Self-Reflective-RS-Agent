@@ -1,0 +1,57 @@
+{
+  "task_id": "thinkgeo_96",
+  "query": "Can you write on image, the distance between each car in meter using gsd: 1.0686",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0050.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0050.png",
+        "text": "car",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((601 + 651) / 2), round((97 + 178) / 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((306 + 370) / 2), round((204 + 281) / 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((((626 - 338)**2 + (138 - 243)**2)**0.5) * 1.0686, 1)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((626 + 338) / 2), round((138 + 243) / 2)"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "AddText",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0050.png",
+        "text": "Distance: 331.0 m",
+        "position": "(482, 191)",
+        "color": "white"
+      }
+    }
+  ],
+  "final_answer": ""
+}

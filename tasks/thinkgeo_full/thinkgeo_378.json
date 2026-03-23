@@ -1,0 +1,57 @@
+{
+  "task_id": "thinkgeo_378",
+  "query": "Within the upper half of the post image, how many buildings remain no-damage, and what percentage of all no-damage buildings in the image does that subset constitute?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000418_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000418_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000418_post_disaster.png",
+        "text": "How many buildings are no-damage in the upper half of the post image?"
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000418_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000418_post_disaster.png",
+        "text": "How many buildings are no-damage in the entire post-disaster image?"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "11 / 37 * 100"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Number of no-damage buildings in upper half: 11.\n This constitutes approximately 29.73% of all no-damage buildings in the image.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000418_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000418_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "11"
+      ],
+      [
+        "29.73%"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are the number of no-damage buildings in the upper half within the range of 9 to 12?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the calculated percentage of no-damage buildings in the upper half to all no-damage buildings within the acceptable range of 26.757% to 32.703%?",
+      "answer": "Yes"
+    }
+  ]
+}

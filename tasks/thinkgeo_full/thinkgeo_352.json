@@ -1,0 +1,58 @@
+{
+  "task_id": "thinkgeo_352",
+  "query": "Count the no-damage and destroyed buildings? and if each rescue unit can inspect ten damaged buildings, how many units are needed to cover all destroyed structures?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_post_disaster.png",
+        "text": "How many no-damage buildings in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_post_disaster.png",
+        "text": "How many buildings destroyed in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\nimport math\ndef solution():\n    return math.ceil(5 / 10)\n```"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " No-damage buildings: **1**.\n Destroyed buildings: **5**.\n **1 rescue unit** is needed to inspect all destroyed buildings.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 1 no-damage building?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are there exactly 5 destroyed buildings?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the number of rescue unit required to inspect all destroyed buildings stated as 1?",
+      "answer": "Yes"
+    }
+  ]
+}

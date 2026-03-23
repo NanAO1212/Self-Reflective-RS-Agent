@@ -1,0 +1,49 @@
+{
+  "task_id": "thinkgeo_12",
+  "query": "How many houses are in between the houses with swimming pools?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7333.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7333.jpg",
+        "text": "swimming pool",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "min(1148, 3344), min(1145, 1892), max(1313, 3602), max(1310, 2186)"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7333.jpg",
+        "text": "house",
+        "bbox": "(1148, 1145, 3602, 2186)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 5 houses located between the houses with swimming pools.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "5 houses",
+        "five houses"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 5 houses located between the houses with swimming pools?",
+      "answer": "Yes"
+    }
+  ]
+}

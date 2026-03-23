@@ -1,0 +1,45 @@
+{
+  "task_id": "thinkgeo_389",
+  "query": "Assuming each rescue team can inspect two damaged buildings per hour, estimate the total number of team-hours required to survey all damaged buildings in the post image.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_post_disaster.png",
+        "text": "How many damaged (minor, major)buildings are in the post-disaster image?"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "23 / 2"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Total damaged buildings: 23.\n Total team-hours required: **11.5**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "11.5"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported total damaged buildings within the acceptable range of 20 to 25?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the reported total team-hours within the acceptable range of 10.35 to 12.65?",
+      "answer": "Yes"
+    }
+  ]
+}

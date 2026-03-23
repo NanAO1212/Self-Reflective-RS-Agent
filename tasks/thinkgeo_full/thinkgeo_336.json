@@ -1,0 +1,63 @@
+{
+  "task_id": "thinkgeo_336",
+  "query": "Compute ratio of the destroyed buildings in post image to the total buildings in the post image. How many rescue teams are required if each team is responsible for three destroyed buildings?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_pre_disaster.png",
+        "text": "How many total buildings in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_post_disaster.png",
+        "text": "How many buildings destroyed in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "5 / 57"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\nimport math\ndef solution():\n    return str(math.ceil(5 / 3))\n```"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Ratio of destroyed buildings to total buildings  **0.088**.\n **2 rescue teams** are required when each team is responsible for three destroyed buildings.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "0.088"
+      ],
+      [
+        "2"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are the destroyed-to-total building ratio with in the range 0.07 to  0.1  (7 to 10 %)?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the computed number of rescue teams correctly reported as 2",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "task_id": "thinkgeo_279",
+  "query": "How many aircraft are currently positioned near the main terminal building, and of those, how many are connected to a jet bridge?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P2220.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P2220.png",
+        "text": "airport main terminal area",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P2220.png",
+        "text": "aircraft",
+        "bbox": "(245,134,604,604)"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P2220.png",
+        "text": "aircraft connected to jet bridge",
+        "bbox": "(245,134,604,604)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 5 aircraft near the main terminal building, of which 2 are connected to a jet bridge.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "5",
+        "five"
+      ],
+      [
+        "2",
+        "two"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 5 aircraft near the main terminal building?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are 2 of these aircraft connected to a jet bridge?",
+      "answer": "Yes"
+    }
+  ]
+}

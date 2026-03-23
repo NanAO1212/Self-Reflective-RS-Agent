@@ -1,0 +1,64 @@
+{
+  "task_id": "thinkgeo_335",
+  "query": "In the post-disaster image, how many more destroyed buildings appear on the right half of the image than on the left, and what percentage of the total destroyed count does this difference represent?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_post_disaster.png",
+        "text": "How many buildings destroyed in the right half of the post-disaster image?"
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_post_disaster.png",
+        "text": "How many buildings destroyed in the left half of the post-disaster image?"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "4 - 1"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "3 / 5 * 100"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " There are 3 more destroyed buildings on the right half than on the left.\n This difference represents **60%** of the total destroyed buildings.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000327_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "3"
+      ],
+      [
+        "60%"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 3 more destroyed buildings on the right half than on the left?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the stated percentage (difference to the total destroyed buildings) within the acceptable range of 54% to 66%?",
+      "answer": "Yes"
+    }
+  ]
+}

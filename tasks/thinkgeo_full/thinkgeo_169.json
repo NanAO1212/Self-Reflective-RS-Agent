@@ -1,0 +1,64 @@
+{
+  "task_id": "thinkgeo_169",
+  "query": "How many cars on the road? Are there adjacent houses to that car within 80m radius (assume GSD 1px/meter).",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\25.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\25.png",
+        "text": "car on road",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(70+101)/2"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(475+495)/2"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\25.png",
+        "text": "house",
+        "bbox": "(5.5, 405.0, 165.5, 565.0)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There is 1 car on the road, and yes, there is 2 house within an 80 meters radius.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1 car",
+        "one car"
+      ],
+      [
+        "2 houses",
+        "two houses"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is there exactly one car on the road?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are there two houses within an 80 meters radius of the car?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "task_id": "thinkgeo_28",
+  "query": "Search average loss for all flooded homes in Texas and share the total loss for all flooded homes.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7420.jpg",
+  "steps": [
+    {
+      "tool_name": "GoogleSearch",
+      "tool_type": "logic",
+      "input": {
+        "query": "average loss due to flood per home in Texas"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7420.jpg",
+        "text": "flooded house"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "25 * 30000"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The estimated total loss for all flooded homes in the image is approximately $750,000.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "750000"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported total estimated loss within the acceptable range of $675,000 to $825,000?",
+      "answer": "Yes"
+    }
+  ]
+}

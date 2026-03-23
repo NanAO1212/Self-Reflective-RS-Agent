@@ -1,0 +1,58 @@
+{
+  "task_id": "thinkgeo_192",
+  "query": "Detect airplanes, compute the straight line distance between their centroids in meters (assuming GSD 0.9 m/px).",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\005.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\005.jpg",
+        "text": "airplane",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\nfrom sympy import symbols\n\ndef solution():\n    x1, y1, x2, y2 = 401.0, 596.0, 443.0, 636.0\n    cx = (x1 + x2) / 2\n    cy = (y1 + y2) / 2\n    return str((cx, cy))\n```"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\nfrom sympy import symbols\n\ndef solution():\n    x1, y1, x2, y2 = 606.0, 138.0, 668.0, 199.0\n    cx = (x1 + x2) / 2\n    cy = (y1 + y2) / 2\n    return str((cx, cy))\n```"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((422-637)**2 + (616-168.5)**2)**0.5 * 0.9"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "447",
+        "446.82"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the computed distance between the airplane centroids within the acceptable range of 402 to 492 meters?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response explicitly mention that this value is the straight line distance between their centroids?",
+      "answer": "Yes"
+    }
+  ]
+}

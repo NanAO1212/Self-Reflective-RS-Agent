@@ -1,0 +1,53 @@
+{
+  "task_id": "thinkgeo_50",
+  "query": "Among the minor damaged buildings, which one is the largest?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000418_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\hurricane-michael_00000418_post_disaster.png",
+        "text": "minor-damage building",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(700 - 681) * (134 - 114)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(247 - 205) * (973 - 948)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(812 - 769) * (941 - 899)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The largest minor-damaged building is the one with bounding box (769, 899, 812, 941), having an area of 1806 square pixels.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "(769.0, 899.0, 812.0, 941.0)"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are all four coordinates within 10% of their reported values (x1 between 764.7 and 773.3, y1 between 894.8 and 903.2, x2 between 807.7 and 816.3, y2 between 936.8 and 945.2)?",
+      "answer": "Yes"
+    }
+  ]
+}

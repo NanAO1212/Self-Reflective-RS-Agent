@@ -1,0 +1,56 @@
+{
+  "task_id": "thinkgeo_264",
+  "query": "Utilizing the provided imagery (GSD: 0.1368 m), perform a spatial analysis to calculate the distance in meters between the two furthest tennis courts. Round the result to the nearest whole number.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0186.png",
+  "steps": [
+    {
+      "tool_name": "ImageDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0186.png"
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0186.png",
+        "text": "leftmost tennis court",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0186.png",
+        "text": "rightmost tennis court",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((( (172+258)/2 - (1137+1222)/2 )**2 + ( (205+386)/2 - (224+402)/2 )**2 )**0.5) * 0.1368"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The distance between the tennis courts furthest from each other is approximately 132 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "132",
+        "132.0"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the computed distance between the tennis courts furthest from each other within the acceptable range of 118.8 to 145.2 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "task_id": "thinkgeo_148",
+  "query": "Identify the destroyed building and estimate the ratio of partially destroyed and fully destroyed",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731603_36662703.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731603_36662703.jpg",
+        "text": "destroyed building",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731603_36662703.jpg",
+        "bbox": "(426, 550, 716, 804)",
+        "attribute": "destruction status (fully or partially collapsed)"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731603_36662703.jpg",
+        "bbox": "(1000, 562, 1133, 708)",
+        "attribute": "destruction status (fully or partially collapsed)"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731603_36662703.jpg",
+        "bbox": "(1081, 645, 1250, 839)",
+        "attribute": "destruction status (fully or partially collapsed)"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731603_36662703.jpg",
+        "bbox": "(802, 778, 978, 1032)",
+        "attribute": "destruction status (fully or partially collapsed)"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731603_36662703.jpg",
+        "bbox": "(391, 909, 629, 1158)",
+        "attribute": "destruction status (fully or partially collapsed)"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34731603_36662703.jpg",
+        "bbox": "(754, 987, 929, 1218)",
+        "attribute": "destruction status (fully or partially collapsed)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Out of 6 destroyed buildings, 1 is fully collapsed and 5 are partially collapsed. The ratio of partially to fully destroyed buildings is 5:1.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1:5",
+        "5:1"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 6 destroyed buildings identified?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the number of fully collapsed buildings reported as 1?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the ratio of partially to fully destroyed buildings given as 5:1?",
+      "answer": "Yes"
+    }
+  ]
+}

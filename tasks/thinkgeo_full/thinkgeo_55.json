@@ -1,0 +1,48 @@
+{
+  "task_id": "thinkgeo_55",
+  "query": "Is there any house with swimming pool are majorly-damaged?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\midwest-flooding_00000017_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\midwest-flooding_00000017_post_disaster.png",
+        "text": "house with swimming pool",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\midwest-flooding_00000017_post_disaster.png",
+        "bbox": "(744, 874, 806, 931)",
+        "attribute": "damage level"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "No, there is a house with a swimming pool that is minor-damaged.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "minor damage"
+      ],
+      [
+        "no"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is it stated that the house with a swimming pool has sustained minor damage?",
+      "answer": "Yes"
+    },
+    {
+      "question": "According to the response, is the house that includes a swimming pool classified as minor-damaged?",
+      "answer": "Yes"
+    }
+  ]
+}

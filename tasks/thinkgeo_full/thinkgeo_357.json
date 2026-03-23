@@ -1,0 +1,50 @@
+{
+  "task_id": "thinkgeo_357",
+  "query": "Determine how many buildings remain intact in the post-event image, compare that to the total number of buildings detected in the pre-event image, and express the result as a simplified fraction.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_pre_disaster.png",
+        "text": "How many total buildings in the pre-disaster image?"
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_post_disaster.png",
+        "text": "How many buildings are intact (no damage) in the post-disaster image?"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The fraction of intact buildings to total buildings is 4/5.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "4/5"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there 4 intact buildings out of 5 total buildings?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the fraction of intact to total buildings given as 4/5?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the fraction 4/5 expressed in its simplest form?",
+      "answer": "Yes"
+    }
+  ]
+}

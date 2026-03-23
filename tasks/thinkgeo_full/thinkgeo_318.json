@@ -1,0 +1,63 @@
+{
+  "task_id": "thinkgeo_318",
+  "query": "Detect construction waste and domestic garbage, and estimate their area ratio using 0.5m GSD.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40115.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40115.jpg",
+        "text": "construction waste",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40115.jpg",
+        "text": "domestic garbage",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((494-393)*(323-152) + (165-83)*(469-358) + (108-6)*(658-569)) * 0.5 * 0.5"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((490-431)*(791-688) + (801-685)*(176-131)) * 0.5 * 0.5"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "19962.5 / 5737.5"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The total area of construction waste is approximately 3.48 or 3.5 times greater than that of domestic garbage, based on 0.5m GSD.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "3.48",
+        "3.5"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the area of construction waste also stated as approximately 3 to 4 times greater than domestic garbage?",
+      "answer": "Yes"
+    }
+  ]
+}

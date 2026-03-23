@@ -1,0 +1,53 @@
+{
+  "task_id": "thinkgeo_365",
+  "query": "What percentage of the total buildings in pre-event image have been completely destroyed in post-event image?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000003_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000003_pre_disaster.png",
+        "text": "How many total buildings in the pre-event image."
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000003_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000003_post_disaster.png",
+        "text": "How many completely destroyed buildings in the post-event image."
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "1 / 3 * 100"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Percentage of destroyed buildings  **33.33%**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000003_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000003_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "33.33%"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported percentage of destroyed buildings within the acceptable range of 29.997% to 36.663%?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response provide the percentage of destroyed buildings as asked in the query?",
+      "answer": "Yes"
+    }
+  ]
+}

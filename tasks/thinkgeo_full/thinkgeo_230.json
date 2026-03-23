@@ -1,0 +1,51 @@
+{
+  "task_id": "thinkgeo_230",
+  "query": "Estimate the orientation of ships with respect to the north side.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\301.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\301.jpg",
+        "text": "ship",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\301.jpg",
+        "bbox": "(820, 63, 896, 136)",
+        "attribute": "orientation of ships with respect to the north side"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\301.jpg",
+        "bbox": "(1031, 474, 1106, 545)",
+        "attribute": "orientation of ships with respect to the north side"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Both ships in the image are oriented at about 45 degrees clockwise from the north, with their bows pointing toward the southeast.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "45",
+        "southeast"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the oriented of both ships within acceptable range of 40 to 50 degrees clockwise from the north?",
+      "answer": "Yes"
+    }
+  ]
+}

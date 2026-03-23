@@ -1,0 +1,68 @@
+{
+  "task_id": "thinkgeo_239",
+  "query": "How many the white vehicles are there and are these vehicles in same direction?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\392.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\392.jpg",
+        "text": "white vehicle",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\392.jpg",
+        "bbox": "(430, 278, 475, 341)",
+        "attribute": "direction of the vehicle in degrees"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\392.jpg",
+        "bbox": "(492, 46, 562, 79)",
+        "attribute": "direction of the vehicle in degrees"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\392.jpg",
+        "bbox": "(574, 20, 643, 59)",
+        "attribute": "direction of the vehicle in degrees"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 3 white vehicles. The first is oriented at 330, and the other two are oriented at 250. They are not in same direction",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "3",
+        "three"
+      ],
+      [
+        "no",
+        "not in same direction"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 3 white vehicles present in the image?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is it mentioned that the direction is not same?",
+      "answer": "Yes"
+    }
+  ]
+}

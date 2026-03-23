@@ -1,0 +1,67 @@
+{
+  "task_id": "thinkgeo_182",
+  "query": "What is the distance between the two detected storage tanks in the image, assuming a ground sampling distance (GSD) of 0.6 meters per pixel?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\88.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\88.png",
+        "text": "storage tank",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(131+271)/2"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(155+287)/2"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(136+278)/2"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(336+466)/2"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((207.0 - 201.0)**2 + (401.0 - 221.0)**2)**0.5 * 0.6"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The distance between the two storage tanks is approximately 108.0 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "108"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the computed distance within the acceptable range of 97.2 to 118.8 meters (±10% of 108.0 m)?",
+      "answer": "Yes"
+    }
+  ]
+}

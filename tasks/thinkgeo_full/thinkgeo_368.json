@@ -1,0 +1,60 @@
+{
+  "task_id": "thinkgeo_368",
+  "query": "Detect total buildings in the pre and post images, how many buildings from the pre image get destroyed in the post image?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000005_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000005_pre_disaster.png",
+        "text": "How many total buildings in the pre-disaster image?"
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000005_post_disaster.png",
+        "text": "How many total buildings in the post-disaster image?"
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000005_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000005_post_disaster.png",
+        "text": "How many buildings destroyed in the post-disaster image?"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Total buildings in pre-disaster image: **1**.\n Total buildings in post-disaster image: **1**.\n Buildings destroyed from pre to post: **1**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000005_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\guatemala-volcano_00000005_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1",
+        "1",
+        "1"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 1 building in the pre-disaster image as reported?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are there exactly 1 building in the post-disaster image as reported?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are exactly 1 building reported as destroyed from pre to post?",
+      "answer": "Yes"
+    }
+  ]
+}

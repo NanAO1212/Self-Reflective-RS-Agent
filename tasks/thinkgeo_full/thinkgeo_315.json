@@ -1,0 +1,55 @@
+{
+  "task_id": "thinkgeo_315",
+  "query": "Check if the garbage is dumped within an eco-sensitive agricultural zone (with a 50m buffer), assuming 0.5m GSD. If yes, then it is restricted for dumping.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40027.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40027.jpg",
+        "text": "domestic garbage",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "586-100, 649-100, 699+100, 719+100"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40027.jpg",
+        "bbox": "(486, 549, 799, 819)",
+        "attribute": "is this region part of an agricultural zone"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Yes, the garbage is within 50 meters of an agricultural zone. Dumping in this area is restricted.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "yes"
+      ],
+      [
+        "restricted"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is dumping identified as restricted because the garbage falls within the eco-sensitive zone?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the response consistent with the requirement that dumping is restricted in this area?",
+      "answer": "Yes"
+    }
+  ]
+}

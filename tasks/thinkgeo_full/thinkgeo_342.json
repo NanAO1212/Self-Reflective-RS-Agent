@@ -1,0 +1,50 @@
+{
+  "task_id": "thinkgeo_342",
+  "query": "What percentage of buildings in the post image were completely destroyed compared to no-damage buildings?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_post_disaster.png",
+        "text": "How many buildings were destroyed in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_post_disaster.png",
+        "text": "How many no-damage buildings in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "5 / 14 * 100"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Percentage of destroyed buildings compared to no-damage buildings  **35.7%**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "35.7%"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported percentage of destroyed buildings compared to no-damage buildings within the range of 32.13% to 39.27%?",
+      "answer": "Yes"
+    }
+  ]
+}

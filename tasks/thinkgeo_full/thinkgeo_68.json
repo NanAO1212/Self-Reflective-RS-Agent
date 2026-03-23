@@ -1,0 +1,49 @@
+{
+  "task_id": "thinkgeo_68",
+  "query": "How many buildings are destroyed between the area of no-damage buildings?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000212_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000212_post_disaster.png",
+        "text": "no-damage building",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "min(828, 904), min(230, 573), max(852, 1006), max(249, 659)"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000212_post_disaster.png",
+        "text": "destroyed building",
+        "bbox": "(828, 230, 1006, 659)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 3 destroyed buildings located between the two no-damage buildings.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "3 buildings",
+        "three buildings"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 3 destroyed buildings located between the two no-damage buildings?",
+      "answer": "Yes"
+    }
+  ]
+}

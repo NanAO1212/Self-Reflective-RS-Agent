@@ -1,0 +1,46 @@
+{
+  "task_id": "thinkgeo_321",
+  "query": "Detect construction waste and estimate whether it severely affects tree growth in the area.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\NI13719.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\NI13719.jpg",
+        "text": "construction waste",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\NI13719.jpg",
+        "bbox": "(324, 736, 535, 898)",
+        "attribute": "tree growth impact"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Yes, the construction waste region appears to severely affect tree growth.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "yes",
+        "tree growth affected"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the construction waste region indicated?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response state that the construction waste region appears to severely affect tree growth?",
+      "answer": "Yes"
+    }
+  ]
+}

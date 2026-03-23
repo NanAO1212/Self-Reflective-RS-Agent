@@ -1,0 +1,49 @@
+{
+  "task_id": "thinkgeo_356",
+  "query": "List the bounding box coordinates of buildings that were visible before the disaster but are missing afterward, then estimate the average ground area in square meters of those destroyed structures. GSD=1.8769937",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_post_disaster.png",
+        "text": "Return parseable list of missing_boxes = [(x0,y0,x1,y1), ...] for buildings visible before the disaster but not present afterward."
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    missing_boxes = [(696, 0, 709, 14)]\n    return str(round(sum((x1-x0)*(y1-y0) for (x0,y0,x1,y1) in missing_boxes)*(1.8769937**2)/len(missing_boxes), 2))\n```"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Missing buildings bounding boxes: [(696, 0, 709, 14)]\n Average ground area of destroyed structures: **641.21 square meters**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "641.21"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is there only 1 missing buildings bounding boxes correctly listed?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are all four coordinates within 10% of their reported values (x1 between 626.4 and 765.6, y1 around 0, x2 between 638.1 and 778.0, y2 between 12.6 and 15.4)?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the average ground area of destroyed structures within the range of 577.089 to 705.331 square meters?",
+      "answer": "Yes"
+    }
+  ]
+}

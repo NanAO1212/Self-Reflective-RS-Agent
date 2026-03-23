@@ -1,0 +1,74 @@
+{
+  "task_id": "thinkgeo_358",
+  "query": "Divide the scene into four equal quadrants and identify which quadrant shows the highest count of buildings that were present before but no longer appear after the disaster. Given Image size: 1024x1024",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_post_disaster.png",
+        "text": "Identify buildings visible in the pre-disaster image but missing in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    missing_boxes=[(696, 0, 709, 14)]\n    return str(sum(1 for (x0,y0,_,_) in missing_boxes if x0 < 1024/2 and y0 < 1024/2))\n```"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    missing_boxes=[(696, 0, 709, 14)]\n    return str(sum(1 for (x0,y0,_,_) in missing_boxes if x0 >= 1024/2 and y0 < 1024/2))\n```"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    missing_boxes=[(696, 0, 709, 14)]\n    return str(sum(1 for (x0,y0,_,_) in missing_boxes if x0 < 1024/2 and y0 >= 1024/2))\n```"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    missing_boxes=[(696, 0, 709, 14)]\n    return str(sum(1 for (x0,y0,_,_) in missing_boxes if x0 >= 1024/2 and y0 >= 1024/2))\n```"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Top-right quadrant have the 1 missing (destroyed building).",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000206_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1."
+      ],
+      [
+        "Top-right quadrant",
+        "Top right quadrant"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are the buildings missing after the disaster identified as being in the top-right quadrant?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response state that there is exactly one missing (destroyed) building in that quadrant?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response specify only the top-right quadrant rather than mentioning any other quadrant?",
+      "answer": "Yes"
+    }
+  ]
+}

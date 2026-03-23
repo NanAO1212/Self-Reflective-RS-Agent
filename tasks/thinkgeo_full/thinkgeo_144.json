@@ -1,0 +1,64 @@
+{
+  "task_id": "thinkgeo_144",
+  "query": "First, identify if there is a destroyed building in the image. Then, if found, check whether any road lies within 30 meters of it, based on a GSD of 0.5 meters per pixel.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34700251_36676470.jpg",
+  "steps": [
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34700251_36676470.jpg",
+        "text": "destroyed building"
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34700251_36676470.jpg",
+        "text": "destroyed building",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "30 / 0.5"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34700251_36676470.jpg",
+        "bbox": "(371.0, 498.0, 761.0, 824.0)",
+        "attribute": "presence of road"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Yes, there is a road within 30 meters of the destroyed building.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1 destroyed building",
+        "one destroyed building"
+      ],
+      [
+        "yes"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is there exactly one destroyed building detected in the image?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response identify the presence of a road within 30 meters of the destroyed building?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "task_id": "thinkgeo_208",
+  "query": "Are these basketball courts within 200m distance of each other, state distance, using GSD 1.4367?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\138.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\138.jpg",
+        "text": "basketball court",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "def solution():\n    return str(((219+418)/2, (190+388)/2)), str(((329+536)/2, (227+439)/2))\n"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(((432.5-318.5)**2 + (333.0-289.0)**2)**0.5)*1.4367"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Yes, the basketball courts are approximately 175.6 meters apart, which is within 200 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "yes"
+      ],
+      [
+        "175.6"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are the basketball courts explicitly stated as being within 200 meters of each other?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the distance between the basketball courts is in between the range of 158.04 to 193.16?",
+      "answer": "Yes"
+    }
+  ]
+}

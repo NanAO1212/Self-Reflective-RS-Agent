@@ -1,0 +1,28 @@
+{
+  "task_id": "thinkgeo_149",
+  "query": "Out of all destroed buildings, locate the least destroed and draw box over it",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34732169_36666855.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34732169_36666855.jpg",
+        "text": "least destroyed building",
+        "top1": true
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34732169_36666855.jpg",
+        "bbox": "(360, 33, 542, 266)",
+        "annotation": "Least destroyed building"
+      }
+    }
+  ],
+  "final_answer": ""
+}

@@ -1,0 +1,80 @@
+{
+  "task_id": "thinkgeo_114",
+  "query": "What is the distance between the cars traveling on the southbound road, using GSD 1.6310?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0190.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0190.png",
+        "text": "car",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0190.png",
+        "bbox": "(261, 76, 285, 129)",
+        "attribute": "direction of the car"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0190.png",
+        "bbox": "(602, 145, 625, 196)",
+        "attribute": "direction of the car"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0190.png",
+        "bbox": "(327, 540, 354, 596)",
+        "attribute": "direction of the car"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(round((261+285)/2), round((76+129)/2))"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(round((327+354)/2), round((540+596)/2))"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((((341-273)**2 + (568-103)**2)**0.5)*1.6310)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The distance between the two southbound cars is approximately 768 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "768"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported distance within the acceptable range of 691.2 to 844.8 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

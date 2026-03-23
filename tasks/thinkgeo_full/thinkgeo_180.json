@@ -1,0 +1,35 @@
+{
+  "task_id": "thinkgeo_180",
+  "query": "Identify every circular storage tank in the compound, measure each tank's real-world diameter using the GSD (0.8m/px), and draw box around the largest tank.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\87.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\87.png",
+        "text": "circular storage tank",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "[(135-40)*0.8, (273-200)*0.8, (410-331)*0.8, (513-473)*0.8, (516-463)*0.8, (553-515)*0.8, (455-434)*0.8, (473-455)*0.8]"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\87.png",
+        "bbox": "(40,88,135,181)",
+        "annotation": "Largest tank"
+      }
+    }
+  ],
+  "final_answer": ""
+}

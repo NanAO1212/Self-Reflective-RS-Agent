@@ -1,0 +1,34 @@
+{
+  "task_id": "thinkgeo_4",
+  "query": "Visualization-only regression.",
+  "steps": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+        "bbox": "(300, 300, 420, 420)",
+        "annotation": "box A"
+      }
+    },
+    {
+      "tool_name": "DrawMask",
+      "tool_type": "operation",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+        "bbox": [520, 520, 650, 650],
+        "color": "green",
+        "alpha": 0.35
+      }
+    },
+    {
+      "tool_name": "AddText",
+      "tool_type": "operation",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+        "text": "visualization test",
+        "position": "rt"
+      }
+    }
+  ]
+}

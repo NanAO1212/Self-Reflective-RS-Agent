@@ -1,0 +1,65 @@
+{
+  "task_id": "thinkgeo_412",
+  "query": "Given a GSD of 0.12399158194 m/px, segment every vehicle, work out how many occupy fewer than 600 pixels, translate that 600‑pixel threshold into square metres, and determine what percentage of the total vehicles that represents.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P04991.png",
+  "steps": [
+    {
+      "tool_name": "SegmentObjectPixels",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P04991.png",
+        "text": "small vehicle",
+        "flag": true
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "def solution():\ncounts=[723,703,640,709,535]\n    return str(len(counts))"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "600 * 0.12399158194 ** 2"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "def solution():\ncounts=[723,703,640,709,535]\nsmall=sum(1 for c in counts if c<600)\n\n    return str(small)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "1 / 5 * 100"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "• Vehicles with <600 pixels: **1 of 5**.\n• 600 pixels ≈ **9.22 m sq**.\n• That is **20 %** of all detected vehicles.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1",
+        "20%"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 5 detected vehicles, with 1 of them occupying fewer than 600 pixels?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the percentage of vehicles occupying fewer than 600 pixels reported as within the range of 18% to 22%?",
+      "answer": "Yes"
+    }
+  ]
+}

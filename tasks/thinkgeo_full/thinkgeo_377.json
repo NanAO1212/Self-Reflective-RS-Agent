@@ -1,0 +1,49 @@
+{
+  "task_id": "thinkgeo_377",
+  "query": "Divide the image into four quadarants, identify the no-damage, minor damage, major damage and destroyed buildings in each quadarants. Calculate which quadarant has ratio of destroyed to no-damage buildings ratio.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000372_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000372_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000372_post_disaster.png",
+        "text": "Provide the number of no-damage, minor-damage, major-damage, and destroyed buildings in each quadrant of the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "1 / 7"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Ratios of destroyed to no-damage buildings by quadrant:\n  - Top-left: 0\n  - Top-right: 0\n  - Bottom-left: 0\n  - Bottom-right: 0.1429\n The quadrant with the highest destroyed-to-no-damage ratio is **bottom-right**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000372_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000372_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "bottom-right"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are the destroyed-to-no-damage ratios for the top-left, top-right, and bottom-left quadrants all reported as 0?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the destroyed-to-no-damage ratio for the bottom-right quadrant reported within 0.12861 to 0.15719?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the quadrant with the highest destroyed-to-no-damage ratio identified as bottom-right?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "task_id": "thinkgeo_281",
+  "query": "Based on this aerial image, what is the nose orientation or heading of the largest aircraft present in degrees from north?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P2220.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P2220.png",
+        "text": "largest airplane",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P2220.png",
+        "bbox": "(830,165,1085,400)",
+        "attribute": "nose direction of plane in degrees from north"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The nose of the largest airplane is oriented at a heading of 75 degrees.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "75"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported heading the largest airplane within the acceptable range of 67 to 83 degrees?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the orientation explicitly stated relative to north as requested in the query?",
+      "answer": "Yes"
+    }
+  ]
+}

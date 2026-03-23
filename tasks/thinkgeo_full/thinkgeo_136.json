@@ -1,0 +1,53 @@
+{
+  "task_id": "thinkgeo_136",
+  "query": "Locate and estimate the distance between aircrafts in the scene. Assuming GSD 1.5px/meter",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0009.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0009.png",
+        "text": "aircraft",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((1090 + 1184) / 2), round((198 + 295) / 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((1010 + 1129) / 2), round((407 + 521) / 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((((1137 - 1070) ** 2 + (247 - 464) ** 2) ** 0.5) * 1.5)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The estimated distance between the two aircrafts is approximately 385 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "385"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the estimated distance between the two aircraft within the acceptable range of 385 meters (i.e., between 346.5 and 423.5 meters)?",
+      "answer": "Yes"
+    }
+  ]
+}

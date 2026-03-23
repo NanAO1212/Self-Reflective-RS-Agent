@@ -1,0 +1,55 @@
+{
+  "task_id": "thinkgeo_49",
+  "query": "The largest house in flood has any car within 10m radius of the house? GSD = 0.015 m/px",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7464.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7464.jpg",
+        "text": "largest flooded house",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "1485 - round(10/0.015), 1687 - round(10/0.015), 2059 + round(10/0.015), 2225 + round(10/0.015)"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7464.jpg",
+        "text": "car",
+        "bbox": "(815, 1017, 2729, 2895)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Yes, there are 2 cars within a 10-meter radius of the largest flooded house.",
+  "gsd_m_per_px": 0.015,
+  "gt_answer": {
+    "whitelist": [
+      [
+        "yes",
+        "2 cars",
+        "two cars"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is it stated that two cars are present within 10 meters of the largest flooded house?",
+      "answer": "Yes"
+    },
+    {
+      "question": "According to the response, are vehicles detected near the largest flooded house within the specified range?",
+      "answer": "Yes"
+    }
+  ]
+}

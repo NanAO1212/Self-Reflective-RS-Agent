@@ -1,0 +1,127 @@
+{
+  "task_id": "thinkgeo_3",
+  "query": "Full tool regression on a single image. Do not specify a class for segmentation; let the agent auto-pick top-N classes.",
+  "steps": [
+    {
+      "tool_name": "ImageDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg"
+      }
+    },
+    {
+      "tool_name": "ObjectDetection",
+      "tool_type": "perception",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg"
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+        "text": "airplane",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+        "text": "vehicle",
+        "bbox": "(0, 0, 2000, 2000)"
+      }
+    },
+    {
+      "tool_name": "SegmentObjectPixels",
+      "tool_type": "perception",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+        "flag": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+        "bbox": "(350, 250, 650, 550)",
+        "attribute": "landcover"
+      }
+    },
+    {
+      "tool_name": "OCR",
+      "tool_type": "perception",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg"
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "text": "Describe any visible changes.",
+        "pre_image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+        "post_image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "3.14 * 2"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "from sympy import symbols, Eq, solve\n\ndef solution():\n    x = symbols('x')\n    return str(solve(Eq(x**2-4,0)))"
+      }
+    },
+    {
+      "tool_name": "Plot",
+      "tool_type": "logic",
+      "input": {
+        "command": "import matplotlib.pyplot as plt\n\ndef solution():\n    fig = plt.figure()\n    plt.plot([1,2,3],[1,4,9])\n    plt.title('demo')\n    return fig"
+      }
+    },
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+        "bbox": "(450, 450, 550, 550)",
+        "annotation": "test box"
+      }
+    },
+    {
+      "tool_name": "DrawMask",
+      "tool_type": "operation",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+        "bbox": [450, 450, 550, 550],
+        "color": "red",
+        "alpha": 0.35
+      }
+    },
+    {
+      "tool_name": "AddText",
+      "tool_type": "operation",
+      "input": {
+        "image": "e:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+        "text": "regression",
+        "position": "lt"
+      }
+    },
+    {
+      "tool_name": "GoogleSearch",
+      "tool_type": "operation",
+      "input": {
+        "query": "remote sensing airport runway"
+      }
+    }
+  ]
+}

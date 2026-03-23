@@ -1,0 +1,59 @@
+{
+  "task_id": "thinkgeo_221",
+  "query": "Count the number of large vehicles inside a 30m expanded region around the roundabout.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0067.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\002.jpg",
+        "text": "airplane",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "30 / 0.139"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "397.0 - 215.83, 495.0 - 215.83, 911.0 + 215.83, 1005.0 + 215.83"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0067.png",
+        "text": "large-vehicle",
+        "bbox": "(181.17, 279.17, 1126.83, 1220.83)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 2 large vehicles inside the 30m expanded region around the roundabout.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "2"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly two large vehicles inside the 30m expanded region around the roundabout?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response explicitly mention large vehicles when stating the count?",
+      "answer": "Yes"
+    }
+  ]
+}

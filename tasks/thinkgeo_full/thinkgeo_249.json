@@ -1,0 +1,51 @@
+{
+  "task_id": "thinkgeo_249",
+  "query": "What is the exact wording, and orientation (degree from north) of the large field markings painted on the turf inside the central track?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\639.jpg",
+  "steps": [
+    {
+      "tool_name": "OCR",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\639.jpg"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\639.jpg",
+        "bbox": "(353, 69, 406, 103)",
+        "attribute": "orientation of the marking in degrees from north"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\639.jpg",
+        "bbox": "(443, 204, 498, 244)",
+        "attribute": "orientation"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The field markings read 'STAPLES' at the north end and 'WRECKERS' at the south end. Both are oriented at approximately 70° clockwise from the north.",
+  "gt_answer": [
+    "'STAPLES' at the north end and 'WRECKERS' at the south end. Both are oriented at approximately 70 degrees clockwise from north."
+  ],
+  "evaluation": [
+    {
+      "question": "Are the field markings reading STAPLES at the north end?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are the field markings reading WRECKERSat the south end?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are both markings oriented clockwise from north, and within the range of 63 to 77?",
+      "answer": "Yes"
+    }
+  ]
+}

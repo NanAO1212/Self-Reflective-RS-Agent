@@ -1,0 +1,53 @@
+{
+  "task_id": "thinkgeo_398",
+  "query": "What percentage of all buildings in the scene ended up suffering major structural failure after the event?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000119_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000119_pre_disaster.png",
+        "text": "How many total buildings are there in the pre-disaster image?"
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000119_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000119_post_disaster.png",
+        "text": "How many buildings suffer major structural failure in the post-disaster image?"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "10 / 10 * 100"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " **100%** of all buildings in the scene suffered major structural failure after the event.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000119_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000119_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "100.0%"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Does the reported percentage major structural failure fall within the acceptable range of 90% to 100%?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response explicitly state that all buildings in the scene experienced major structural failure?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "task_id": "thinkgeo_70",
+  "query": "Plot by calculating percentage per classes of no-damage, destroyed, and major damaged buildings in the image.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\socal-fire_00000356_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\socal-fire_00000356_post_disaster.png",
+        "text": "building"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\socal-fire_00000356_post_disaster.png",
+        "text": "no-damage building"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\socal-fire_00000356_post_disaster.png",
+        "text": "destroyed building"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\socal-fire_00000356_post_disaster.png",
+        "text": "major-damage building"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round(14 / 20 * 100, 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round(5 / 20 * 100, 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round(1 / 20 * 100, 2)"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "Plot",
+      "tool_type": "operation",
+      "input": {
+        "command": "```python\nimport matplotlib.pyplot as plt\n\ndef solution():\n    labels = ['No-Damage', 'Destroyed', 'Major-Damage']\n    percentages = [70.0, 25.0, 5.0]\n\n    fig = plt.figure(figsize=(6, 6))\n    plt.pie(percentages, labels=labels, autopct='%1.1f%%', startangle=140, colors=['green', 'red', 'orange'])\n    plt.title('Building Damage Classes - Percentage Distribution')\n    plt.axis('equal')\n    return fig\n```"
+      }
+    }
+  ],
+  "final_answer": ""
+}

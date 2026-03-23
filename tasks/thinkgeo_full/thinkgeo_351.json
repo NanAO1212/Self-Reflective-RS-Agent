@@ -1,0 +1,45 @@
+{
+  "task_id": "thinkgeo_351",
+  "query": "Provide the bounding boxes of all fully destroyed buildings and compute their combined footprint area in square meters. Given GSD=1.8769937",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_post_disaster.png",
+        "text": "List bounding boxes of all destroyed buildings in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    return str(round(((235-168)*(761-722) + (194-150)*(745-705) + (459-407)*(682-650) + (473-464)*(682-670) + (15-0)*(381-346)) * (1.8769937**2), 2))\n```"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Bounding boxes of destroyed buildings: **[(168, 722, 235, 761), (150, 705, 194, 745), (407, 650, 459, 682), (464, 670, 473, 682), (0, 346, 15, 381)]**\n Combined footprint area: **23,499.11 m**",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000181_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "23499.11"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly five bounding boxes listed in the response?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the combined footprint area within the acceptable range of 21,149.20 to 25,848.99 square meters?",
+      "answer": "Yes"
+    }
+  ]
+}

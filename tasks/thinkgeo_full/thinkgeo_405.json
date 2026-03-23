@@ -1,0 +1,51 @@
+{
+  "task_id": "thinkgeo_405",
+  "query": "Segment a single vehicle in the image and a ground sampling distance of 0.1403 m/pixel, compute its real-world area in square meters (from pixel count) and then solve for its average width in meters assuming its length is twice its width.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0206.png",
+  "steps": [
+    {
+      "tool_name": "SegmentObjectPixels",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0206.png",
+        "text": "vehicles",
+        "flag": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "409 * (0.1403 ** 2)"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "# import packages\nfrom sympy import symbols, Eq, solve\ndef solution():\n    w = symbols('w')\n    area = 409 * (0.1403**2)\n    equation = Eq(2*w**2, area)\n    solutions = solve(equation, w)\n    # return only the positive solution\n    return str([sol for sol in solutions if sol.is_real and sol > 0])"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Real-world area ≈ **8.0508 m sq**.\n Average width ≈ **2.0063 m**.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "8.0508",
+        "2.0063"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the computed real-world area of vehicle approximately 8.0508 m sq?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the calculated average width of vehicle approximately 2.0063 m?",
+      "answer": "Yes"
+    }
+  ]
+}

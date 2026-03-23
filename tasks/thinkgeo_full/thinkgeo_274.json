@@ -1,0 +1,41 @@
+{
+  "task_id": "thinkgeo_274",
+  "query": "Determine the length of the longest pier in meters rounded to a whole number, assuming all piers are aligned parallel to the x-axis. Use a ground sampling distance (GSD) of 0.1347 meters per pixel.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0518.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0518.png",
+        "text": "pier",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round(max(668-304, 648-325, 645-331, 646-150, 640-324) * 0.1347)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The length of the longest pier is approximately 67 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "67",
+        "67.0",
+        "67.00"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the length of the longest pier within the range of 60.3 m to 73.7 m?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "task_id": "thinkgeo_111",
+  "query": "Can you add the word 'left' in white color right after the word 'only'?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0170.png",
+  "steps": [
+    {
+      "tool_name": "OCR",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0170.png"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(900 + 10, 340)"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "AddText",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0170.png",
+        "text": "left",
+        "position": "(910, 340)",
+        "color": "white"
+      }
+    }
+  ],
+  "final_answer": ""
+}

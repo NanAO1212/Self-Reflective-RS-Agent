@@ -1,0 +1,53 @@
+{
+  "task_id": "thinkgeo_287",
+  "query": "Given a ground sampling distance (GSD) of 0.1257 meters/pixel, determine the center-to-center distance (in meters, rounded to the nearest whole number) between the playground with blue slides and the nearest swimming pool.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0660.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0660.png",
+        "text": "playground with blue slides",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0660.png",
+        "text": "swimming pools",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "min((((171+243)/2 - (209+415)/2)**2 + ((179+254)/2 - (418+640)/2)**2)**0.5, (((171+243)/2 - (348+608)/2)**2 + ((179+254)/2 - (561+796)/2)**2)**0.5, (((171+243)/2 - (610+684)/2)**2 + ((179+254)/2 - (685+753)/2)**2)**0.5) * 0.125"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The center-to-center distance between the playground with blue slides and the nearest swimming pool is approximately 41 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "41.0",
+        "41"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the stated distance within the range of 36 to 45. meters?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response refer specifically to the center-to-center distance between the playground with blue slides and the nearest swimming pool?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "task_id": "thinkgeo_213",
+  "query": "How close are the basketball courts to each other? (GSD = 1.693 m/px)",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\156.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\156.jpg",
+        "text": "basketball court",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "from sympy import symbols\n\ndef solution():\n    # Court 1\n    cx1 = (271.0 + 376.0)/2\n    cy1 = (125.0 + 182.0)/2\n    # Court 2\n    cx2 = (261.0 + 376.0)/2\n    cy2 = (187.0 + 245.0)/2\n    return str(((cx1, cy1), (cx2, cy2)))\n"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(((318.5-323.5)**2 + (216.0-153.5)**2)**0.5)*1.693"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The basketball courts are approximately 106.76 meters apart.",
+  "gsd_m_per_px": 1.693,
+  "gt_answer": {
+    "whitelist": [
+      [
+        "106.76",
+        "106"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the computed distance within the acceptable range of 96.084 to 117.436 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

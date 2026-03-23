@@ -1,0 +1,63 @@
+{
+  "task_id": "thinkgeo_296",
+  "query": "How many cars are parked close to the large house at the top right of the image?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\residencial4.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\residencial4.jpg",
+        "text": "large house at the top right",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\residencial4.jpg",
+        "text": "car",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "max(0, min(790, 495) - max(490, 440)) * max(0, min(390, 300) - max(90, 255))"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "max(0, min(790, 550) - max(490, 495)) * max(0, min(390, 390) - max(90, 330))"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "max(0, min(790, 510) - max(490, 440)) * max(0, min(390, 660) - max(90, 600))"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The cars parked close to the large house at the top right are at bounding boxes (440, 255, 495, 300) and (495, 330, 550, 390). They both overlap with the expanded house region.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "two",
+        "2"
+      ]
+    ],
+    "blacklist": []
+  },
+  "evaluation": [
+    {
+      "question": "Are exactly two cars parked close to the large house at the top right?",
+      "answer": "Yes"
+    }
+  ]
+}

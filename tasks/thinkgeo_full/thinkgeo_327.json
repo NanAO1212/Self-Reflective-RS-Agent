@@ -1,0 +1,55 @@
+{
+  "task_id": "thinkgeo_327",
+  "query": "where is the domestic garbage located and determine if the domestic garbage is located very close to the road (within 5 meters), assuming a ground sampling distance (GSD) of 0.5 meters per pixel.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40075.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40075.jpg",
+        "text": "domestic garbage",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "738-10, 607-10, 813+10, 867+10"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40075.jpg",
+        "bbox": "(728, 597, 823, 877)",
+        "attribute": "is there any road"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Domestic garbage is located at (738, 607, 813, 867). Yes, the domestic garbage is located within 5 meters of the road.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "(738, 607, 813, 867)"
+      ],
+      [
+        "yes"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are the domestic garbage and the road confirmed to be within 5 meters of each other in the response?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are all four coordinates within 10% of their reported values (x1 between 664.2 and 811.8, y1 between 546.3 and 667.7, x2 between 731.7 and 894.3, y2 between 780.3 and 953.7)?",
+      "answer": "Yes"
+    }
+  ]
+}

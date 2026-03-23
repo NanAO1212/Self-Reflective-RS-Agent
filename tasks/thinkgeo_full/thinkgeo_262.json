@@ -1,0 +1,40 @@
+{
+  "task_id": "thinkgeo_262",
+  "query": "Calculate the combined area of tennis courts in square meters. Round the result to the nearest whole number. (gsd:0.141) (use bounding boxes for estimation)",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P01751.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P01751.png",
+        "text": "tennis court",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((695-613)*(603-431) + (825-743)*(602-431) + (826-745)*(862-691) + (695-615)*(863-692) + (519-436)*(733-563) + (389-307)*(736-562) + (259-177)*(735-565) + (518-436)*(473-303) + (386-307)*(475-304) + (257-175)*(476-304)) * 0.141 * 0.141"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The combined real-world area of all the tennis courts is approximately 2774 m sq.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "2774",
+        "2774.0"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported combined real-world area of all the tennis courts within the range of 2496.6 mto 3041.4 m?",
+      "answer": "Yes"
+    }
+  ]
+}

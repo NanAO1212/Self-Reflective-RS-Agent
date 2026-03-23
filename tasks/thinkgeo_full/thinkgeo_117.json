@@ -1,0 +1,49 @@
+{
+  "task_id": "thinkgeo_117",
+  "query": "How many cars are within 20 meters of the truck (gsd = 1.71660)?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0202.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0202.png",
+        "text": "truck",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round(20 / 1.71660)"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0202.png",
+        "text": "car",
+        "bbox": "(838, 190, 1106, 336)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There is one car within 20 meters of the truck.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1",
+        "one"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the number of cars within 20 meters of the truck equal to 1?",
+      "answer": "Yes"
+    }
+  ]
+}

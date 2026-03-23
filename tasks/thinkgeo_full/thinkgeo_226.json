@@ -1,0 +1,66 @@
+{
+  "task_id": "thinkgeo_226",
+  "query": "Detect the runway marking and the main airplane, and calculate the distance (in meters, GSD=0.8 m/px) between their centers.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\286.jpg",
+  "steps": [
+    {
+      "tool_name": "OCR",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\286.jpg"
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\286.jpg",
+        "text": "airplane",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(647+684)/2, (223+254)/2"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(154+215)/2, (370+439)/2"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((665.5-184.5)**2 + (238.5-404.5)**2)**0.5 * 0.8"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The distance between the runway marking ('27') and the airplane is approximately 416.5 meters.",
+  "gsd_m_per_px": 0.8,
+  "gt_answer": {
+    "whitelist": [
+      [
+        "416.5",
+        "416"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported distance within the acceptable range of 374.85 to 458.15 meters?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response refer specifically to the distance between the centers of the runway marking and the main airplane?",
+      "answer": "Yes"
+    }
+  ]
+}

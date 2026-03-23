@@ -1,0 +1,34 @@
+{
+  "task_id": "thinkgeo_386",
+  "query": "How many buildings that appeared no-damage in pre image now exhibit major damage in post image?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_post_disaster.png",
+        "text": "How many buildings that appeared no-damage in pre image now exhibit major damage in post image?"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Number of buildings that changed from no-damage in the pre-disaster image to major damage in the post-disaster image: **20**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000268_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "20"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported value of buildings that went from no-damage in the pre image to major damage in the post image within the range of 18 to 22 buildings?",
+      "answer": "Yes"
+    }
+  ]
+}

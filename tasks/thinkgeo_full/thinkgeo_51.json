@@ -1,0 +1,53 @@
+{
+  "task_id": "thinkgeo_51",
+  "query": "How far are the major damaged buildings from each other? GSD 2.07/px.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000418_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\hurricane-michael_00000418_post_disaster.png",
+        "text": "major-damage building",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((192 + 307) / 2), round((188 + 221) / 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((815 + 849) / 2), round((171 + 204) / 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round(((832 - 250)**2 + (188 - 205)**2)**0.5 * 2.07)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The major-damaged buildings are approximately 1206 units apart based on the provided GSD.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1206"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the computed distance within the acceptable range of 1085.4 to 1326.6 units?",
+      "answer": "Yes"
+    }
+  ]
+}

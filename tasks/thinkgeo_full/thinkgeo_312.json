@@ -1,0 +1,57 @@
+{
+  "task_id": "thinkgeo_312",
+  "query": "Determine if the construction waste is close enough to soccer field to pose a contamination risk, assuming less than 50m is at high risk, with 0.5m gsd",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40015.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40015.jpg",
+        "text": "construction waste",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40015.jpg",
+        "text": "soccer field",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((850 - 845)**2 + (839 - 839)**2)**0.5 * 0.5"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The construction waste is approximately 2.5 meters from the soccer field, which poses a high contamination risk (distance < 50 meters).",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "2.5"
+      ],
+      [
+        "high risk",
+        "yes",
+        "close enough"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there approximately 2.5 meters between the construction waste and the soccer field?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response conclude that this distance poses a high contamination risk?",
+      "answer": "Yes"
+    }
+  ]
+}

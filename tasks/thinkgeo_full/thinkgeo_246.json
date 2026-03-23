@@ -1,0 +1,56 @@
+{
+  "task_id": "thinkgeo_246",
+  "query": "Detect the ground track field, is it occupied or empty? And estimate the square meter area of the field, assuming GSD 0.9m/px.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\463.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\463.jpg",
+        "text": "ground track field",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\463.jpg",
+        "bbox": "(338, 153, 472, 370)",
+        "attribute": "if the ground track field is occupied or empty"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(472-338)*(370-153)*(0.9**2)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The field is empty and its estimated area is approximately 26,407 square meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "empty"
+      ],
+      [
+        "26407.41",
+        "26407"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the ground track field reported as empty?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the estimated area within the acceptable range of 23,766 to 29,048 square meters?",
+      "answer": "Yes"
+    }
+  ]
+}

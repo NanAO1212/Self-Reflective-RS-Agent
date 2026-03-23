@@ -1,0 +1,484 @@
+{
+  "tools": [
+    {
+      "name": "TextToBbox",
+      "description": "在遥感图像中定位指定地物，输出像素坐标边界框。",
+      "inputs": [
+        {
+          "type": "image",
+          "name": "image",
+          "description": "图像路径（本地）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": "text",
+          "description": "地物类型/描述（如建筑物/道路/水体/船舶/飞机等）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "bool",
+          "name": "top1",
+          "description": "是否仅返回置信度最高目标",
+          "optional": true,
+          "default": true,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "(x1, y1, x2, y2) 像素坐标",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": null,
+          "description": "检测置信度",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "ObjectDetection",
+      "description": "检测遥感图像中常见目标并输出类别与bbox。",
+      "inputs": [
+        {
+          "type": "image",
+          "name": "image",
+          "description": "图像路径（本地）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "目标类别",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": null,
+          "description": "(x1, y1, x2, y2) 像素坐标",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": null,
+          "description": "检测置信度",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "CountGivenObject",
+      "description": "统计指定区域内某类地物数量。",
+      "inputs": [
+        {
+          "type": "image",
+          "name": "image",
+          "description": "图像路径（本地）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": "text",
+          "description": "目标类别",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": "bbox",
+          "description": "限定区域bbox (x1,y1,x2,y2)",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "数量（整数）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "SegmentObjectPixels",
+      "description": "分割地物并返回像素面积（单目标或总和）。",
+      "inputs": [
+        {
+          "type": "image",
+          "name": "image",
+          "description": "图像路径（本地）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": "text",
+          "description": "地物类别/描述",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "bool",
+          "name": "flag",
+          "description": "true=返回每个目标像素数；false=总像素数",
+          "optional": true,
+          "default": true,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "像素面积列表或总和",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "RegionAttributeDescription",
+      "description": "描述指定区域的地表属性/语义。",
+      "inputs": [
+        {
+          "type": "image",
+          "name": "image",
+          "description": "图像路径（本地）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": "bbox",
+          "description": "区域bbox (x1,y1,x2,y2)",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": "attribute",
+          "description": "属性类型（如地表类型/颜色/密度）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "区域属性描述",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "ImageDescription",
+      "description": "输出整幅遥感图像场景级描述。",
+      "inputs": [
+        {
+          "type": "image",
+          "name": "image",
+          "description": "图像路径（本地）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "场景描述",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "ChangeDetection",
+      "description": "多时相变化分析，输出变化描述。",
+      "inputs": [
+        {
+          "type": "text",
+          "name": "text",
+          "description": "变化分析问题",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "image",
+          "name": "pre_image",
+          "description": "时相1图像路径",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "image",
+          "name": "post_image",
+          "description": "时相2图像路径",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "变化结果描述",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "OCR",
+      "description": "识别遥感图像中的文字标注。",
+      "inputs": [
+        {
+          "type": "image",
+          "name": "image",
+          "description": "图像路径（本地）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "(x1,y1,x2,y2) 像素坐标",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": null,
+          "description": "识别文字",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "Calculator",
+      "description": "执行数值计算（面积/距离/比例/单位换算）。",
+      "inputs": [
+        {
+          "type": "text",
+          "name": "expression",
+          "description": "数学表达式",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "计算结果",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "Solver",
+      "description": "使用符号计算解决公式推导问题。",
+      "inputs": [
+        {
+          "type": "text",
+          "name": "command",
+          "description": "Python/Sympy 代码",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "求解结果",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "Plot",
+      "description": "生成统计图表作为多模态输出。",
+      "inputs": [
+        {
+          "type": "text",
+          "name": "command",
+          "description": "Python绘图代码",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "图像路径",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "DrawBox",
+      "description": "在遥感图像上绘制边界框用于可视化。",
+      "inputs": [
+        {
+          "type": "image",
+          "name": "image",
+          "description": "图像路径（本地）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": "bbox",
+          "description": "目标bbox (x1,y1,x2,y2)",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": "annotation",
+          "description": "文字标注",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "输出图像路径",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "AddText",
+      "description": "在图像上添加文字说明。",
+      "inputs": [
+        {
+          "type": "image",
+          "name": "image",
+          "description": "图像路径（本地）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": "text",
+          "description": "标注文字",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        },
+        {
+          "type": "text",
+          "name": "position",
+          "description": "位置（像素或预定义方位）",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "输出图像路径",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    },
+    {
+      "name": "GoogleSearch",
+      "description": "检索遥感领域知识用于辅助推理。",
+      "inputs": [
+        {
+          "type": "text",
+          "name": "query",
+          "description": "检索关键词",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ],
+      "outputs": [
+        {
+          "type": "text",
+          "name": null,
+          "description": "搜索结果摘要",
+          "optional": false,
+          "default": null,
+          "filetype": null
+        }
+      ]
+    }
+  ]
+}

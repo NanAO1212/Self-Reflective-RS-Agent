@@ -1,0 +1,48 @@
+{
+  "task_id": "thinkgeo_370",
+  "query": "In post image, how many buildings were destroyed by the wildfire compared to the pre image? If each destroyed building requires 50 labor-hours for inspection, estimate the total labor-hours needed for post-disaster building inspections.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000273_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000273_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000273_post_disaster.png",
+        "text": "How many buildings were destroyed in the post-disaster image compared to the pre-disaster image?"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "9 * 50"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Number of destroyed buildings in post image: **9**.\n Total labor-hours needed for post-disaster building inspections: **450** labor-hours.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000273_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000273_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "9"
+      ],
+      [
+        "450"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 9 destroyed buildings in the post image?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the total labor-hours estimate within the acceptable range of 405 to 495 labor-hours?",
+      "answer": "Yes"
+    }
+  ]
+}

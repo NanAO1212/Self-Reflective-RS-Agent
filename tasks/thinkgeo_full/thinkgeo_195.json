@@ -1,0 +1,64 @@
+{
+  "task_id": "thinkgeo_195",
+  "query": "Which airplane has different heading direction than others, draw box around it.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\007.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\007.jpg",
+        "text": "airplane",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\007.jpg",
+        "bbox": "(278.0, 546.0, 361.0, 630.0)",
+        "attribute": "heading direction"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\007.jpg",
+        "bbox": "(362.0, 476.0, 434.0, 545.0)",
+        "attribute": "heading direction"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\007.jpg",
+        "bbox": "(361.0, 315.0, 457.0, 411.0)",
+        "attribute": "heading direction"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\007.jpg",
+        "bbox": "(574.0, 199.0, 666.0, 293.0)",
+        "attribute": "heading direction"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\007.jpg",
+        "bbox": "(361.0, 315.0, 457.0, 411.0)",
+        "annotation": "Different Direction"
+      }
+    }
+  ],
+  "final_answer": "The airplane with a different heading direction has been highlighted."
+}

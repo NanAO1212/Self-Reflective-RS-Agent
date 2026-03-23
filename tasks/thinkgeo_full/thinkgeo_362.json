@@ -1,0 +1,49 @@
+{
+  "task_id": "thinkgeo_362",
+  "query": "Using the pre- and post-event images, what percentage of all buildings visible before the flood are classified as destroyed afterward?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\midwest-flooding_00000286_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\midwest-flooding_00000286_pre_disaster.png",
+        "text": "How many total buildings in the pre-disaster image."
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\midwest-flooding_00000286_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\midwest-flooding_00000286_post_disaster.png",
+        "text": "How many buildings destroyed in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "6 / 17 * 100"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Approximately **35.29%** of the buildings visible before the flood are classified as destroyed afterward.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\midwest-flooding_00000286_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\midwest-flooding_00000286_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "35.29%"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the stated percentage of buildings visible before the flood classified as destroyed afterward within the range of 31.76% to 38.82%?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "task_id": "thinkgeo_59",
+  "query": "Can you check if major damaged buildings are more in numbers than destroyed buildings?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\palu-tsunami_00000096_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\palu-tsunami_00000096_post_disaster.png",
+        "text": "major-damage building"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\palu-tsunami_00000096_post_disaster.png",
+        "text": "destroyed building"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "No, major-damaged buildings are not more in number than destroyed buildings. There are 14 major-damaged and 33 destroyed buildings.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "no"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are destroyed buildings more numerous than major-damaged buildings?",
+      "answer": "Yes"
+    }
+  ]
+}

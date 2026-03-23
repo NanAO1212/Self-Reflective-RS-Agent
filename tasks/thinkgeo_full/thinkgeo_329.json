@@ -1,0 +1,39 @@
+{
+  "task_id": "thinkgeo_329",
+  "query": "Calculate the centroid-based distance between the construction waste region and the main road reference point (442, 352), assuming a ground sampling distance (GSD) of 0.5 meters per pixel.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40106.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40106.jpg",
+        "text": "construction waste",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((((575+854)/2 - 442)**2 + ((254+495)/2 - 352)**2)**0.5) * 0.5"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The estimated distance from the construction waste to the main road reference point is approximately 85.19 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "85.19"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the estimated distance from the construction waste to the main road within the acceptable the range of 76.67 to 93.71 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "task_id": "thinkgeo_418",
+  "query": "Segment all vehicles, sum their pixel areas, convert the total pixel count to square meters with GSD = 0.1256 m/px, and report that ground coverage.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0684.png",
+  "steps": [
+    {
+      "tool_name": "SegmentObjectPixels",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0684.png",
+        "text": "vehicles",
+        "flag": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "1997 * (0.1256)**2"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Ground coverage by vehicles: approximately **31.50 m-sq**.",
+  "gsd_m_per_px": 0.1256,
+  "gt_answer": {
+    "whitelist": [
+      [
+        "31.50"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported ground coverage within the range of 28.35 to 34.65 m-sq?",
+      "answer": "Yes"
+    }
+  ]
+}

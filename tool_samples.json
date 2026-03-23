@@ -1,0 +1,155 @@
+{
+  "schema": "thinkgeo.tools.schema",
+  "samples": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": { "image": "img_001.png", "text": "building", "top1": false },
+      "raw_output": "(129, 654, 689, 1343), score 90\n(818, 288, 1550, 919), score 89",
+      "parsed": {
+        "bboxes": [
+          { "bbox_px": [129, 654, 689, 1343], "score": 0.9 },
+          { "bbox_px": [818, 288, 1550, 919], "score": 0.89 }
+        ]
+      },
+      "confidence": 0.9,
+      "spatial": { "bboxes_px": [[129, 654, 689, 1343], [818, 288, 1550, 919]] },
+      "meta": { "image_id": "img_001", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "ObjectDetection",
+      "tool_type": "perception",
+      "input": { "image": "img_001.png" },
+      "raw_output": "car (120, 200, 180, 250), score 84\ntruck (210, 260, 340, 380), score 79",
+      "parsed": {
+        "detections": [
+          { "label": "car", "bbox_px": [120, 200, 180, 250], "score": 0.84 },
+          { "label": "truck", "bbox_px": [210, 260, 340, 380], "score": 0.79 }
+        ]
+      },
+      "confidence": 0.84,
+      "spatial": { "bboxes_px": [[120, 200, 180, 250], [210, 260, 340, 380]] },
+      "meta": { "image_id": "img_001", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": { "image": "img_001.png", "text": "car", "bbox": "(129, 654, 689, 1343)" },
+      "raw_output": 6,
+      "parsed": { "count": 6 },
+      "confidence": 0.83,
+      "spatial": { "bboxes_px": [[129, 654, 689, 1343]] },
+      "meta": { "image_id": "img_001", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "SegmentObjectPixels",
+      "tool_type": "perception",
+      "input": { "image": "img_001.png", "text": "building", "flag": true },
+      "raw_output": "1234, 5678, 2222",
+      "parsed": { "pixel_counts": [1234, 5678, 2222], "sum": 9134 },
+      "confidence": 0.8,
+      "spatial": { "mask_area_px": 9134 },
+      "meta": { "image_id": "img_001", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": { "image": "img_001.png", "bbox": "(100, 120, 300, 360)", "attribute": "landuse" },
+      "raw_output": "The region looks like an industrial area with large warehouses.",
+      "parsed": { "text": "The region looks like an industrial area with large warehouses." },
+      "confidence": 0.72,
+      "spatial": { "bboxes_px": [[100, 120, 300, 360]] },
+      "meta": { "image_id": "img_001", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "ImageDescription",
+      "tool_type": "perception",
+      "input": { "image": "img_001.png" },
+      "raw_output": "A dense urban area with roads and buildings.",
+      "parsed": { "text": "A dense urban area with roads and buildings." },
+      "confidence": 0.7,
+      "spatial": {},
+      "meta": { "image_id": "img_001", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": { "text": "Describe changes in flooded houses", "pre_image": "t1.png", "post_image": "t2.png" },
+      "raw_output": "Several houses are newly flooded in the eastern area.",
+      "parsed": { "text": "Several houses are newly flooded in the eastern area." },
+      "confidence": 0.7,
+      "spatial": {},
+      "meta": { "image_id": "t1_t2", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "OCR",
+      "tool_type": "perception",
+      "input": { "image": "img_001.png" },
+      "raw_output": "(100, 200, 160, 240) RUNWAY 12",
+      "parsed": { "items": [ { "bbox_px": [100, 200, 160, 240], "text": "RUNWAY 12" } ] },
+      "confidence": 0.9,
+      "spatial": { "bboxes_px": [[100, 200, 160, 240]] },
+      "meta": { "image_id": "img_001", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": { "expression": "(1550-129) * (1343-288) * (0.5**2)" },
+      "raw_output": "450284.0",
+      "parsed": { "value": "450284.0" },
+      "confidence": 1.0,
+      "spatial": { "area_m2": 450284.0 },
+      "meta": { "image_id": "img_001", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": { "command": "```python\nfrom sympy import symbols, Eq, solve\ndef solution():\n    x = symbols('x')\n    return str(solve(Eq(x+1,3)))\n```" },
+      "raw_output": "[2]",
+      "parsed": { "value": "[2]" },
+      "confidence": 1.0,
+      "spatial": {},
+      "meta": { "image_id": "n/a", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "Plot",
+      "tool_type": "logic",
+      "input": { "command": "```python\nimport matplotlib.pyplot as plt\n\ndef solution():\n    fig = plt.figure()\n    plt.plot([1,2,3],[3,2,1])\n    return fig\n```" },
+      "raw_output": "plot_001.png",
+      "parsed": { "image_path": "plot_001.png" },
+      "confidence": 1.0,
+      "spatial": {},
+      "meta": { "image_id": "n/a", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": { "image": "img_001.png", "bbox": "(100, 200, 160, 240)", "annotation": "runway" },
+      "raw_output": "img_001_annotated.png",
+      "parsed": { "image_path": "img_001_annotated.png" },
+      "confidence": 1.0,
+      "spatial": { "bboxes_px": [[100, 200, 160, 240]] },
+      "meta": { "image_id": "img_001", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "AddText",
+      "tool_type": "operation",
+      "input": { "image": "img_001.png", "text": "damaged", "position": "lt", "color": "red" },
+      "raw_output": "img_001_annotated.png",
+      "parsed": { "image_path": "img_001_annotated.png" },
+      "confidence": 1.0,
+      "spatial": {},
+      "meta": { "image_id": "img_001", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    },
+    {
+      "tool_name": "GoogleSearch",
+      "tool_type": "operation",
+      "input": { "query": "GSD meaning remote sensing", "k": 3 },
+      "raw_output": "1 - Ground sample distance is ...",
+      "parsed": { "text": "1 - Ground sample distance is ..." },
+      "confidence": 1.0,
+      "spatial": {},
+      "meta": { "image_id": "n/a", "timestamp": "2026-01-30T14:47:00Z", "warnings": [] }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "task_id": "thinkgeo_189",
+  "query": "Detect white plane, and estimate the orientation (nose-to-tail heading in degrees relative to the north).",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+  "steps": [
+    {
+      "tool_name": "ObjectDetection",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\001.jpg",
+        "bbox": "(563, 478, 630, 573)",
+        "attribute": "nose-to-tail heading in degrees relative to the north"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "315",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "315"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the orientation within the acceptable range of 283.5 to 346.5 degrees (10% of 315)?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response provide the nose-to-tail heading in degrees relative to north?",
+      "answer": "Yes"
+    }
+  ]
+}

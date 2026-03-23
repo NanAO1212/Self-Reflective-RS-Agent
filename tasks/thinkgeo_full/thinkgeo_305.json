@@ -1,0 +1,87 @@
+{
+  "task_id": "thinkgeo_305",
+  "query": "Evaluate the distance of both garbage types to the big pond, classify them and assess which one is close to surface water. Assume GSD is 0.5 meters per pixel.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\20140.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\20140.jpg",
+        "text": "pond",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\20140.jpg",
+        "text": "garbage",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\20140.jpg",
+        "bbox": "(388, 329, 597, 398)",
+        "attribute": "type of garbage"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\20140.jpg",
+        "bbox": "(637, 313, 896, 557)",
+        "attribute": "type of garbage"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((((388+597)/2 - (18+656)/2)**2 + ((329+398)/2 - (2+202)/2)**2)**0.5) * 0.5"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((((637+896)/2 - (18+656)/2)**2 + ((313+557)/2 - (2+202)/2)**2)**0.5) * 0.5"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The domestic garbage (102.48 m) is closer to the pond than the disposed garbage (133.55 m).",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "domestic garbage: 102.48"
+      ],
+      [
+        "disposed garbage: 133.55"
+      ],
+      [
+        "domestic garbage is closer"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the distance of the domestic garbage to the pond within the acceptable range of 92.23 to 112.73 meters?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the distance of the disposed garbage to the pond within the acceptable range of 120.20 to 146.91 meters?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the domestic garbage closer to the pond than the disposed garbage?",
+      "answer": "Yes"
+    }
+  ]
+}

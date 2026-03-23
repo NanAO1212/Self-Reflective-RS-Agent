@@ -1,0 +1,41 @@
+{
+  "task_id": "thinkgeo_397",
+  "query": "What is the mean distance from the center of the scene to the centroids of all destroyed structures?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000113_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000113_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000113_post_disaster.png",
+        "text": "List bounding boxes and centroids of destroyed buildings in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\nfrom sympy import sqrt, sympify\ndef solution():\n    return str(sympify('sum([sqrt((663.5-512)**2 + (561.0-512)**2),sqrt((635.0-512)**2 + (496.0-512)**2),sqrt((609.0-512)**2 + (426.0-512)**2),sqrt((530.0-512)**2 + (359.5-512)**2),sqrt((476.5-512)**2 + (311.5-512)**2),sqrt((443.0-512)**2 + (242.0-512)**2),sqrt((526.0-512)**2 + (213.5-512)**2),sqrt((541.0-512)**2 + (269.5-512)**2),sqrt((448.0-512)**2 + (168.0-512)**2),sqrt((595.5-512)**2 + (310.5-512)**2)])/10*1.8769937'))\n```"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Mean distance  **405.4 meters**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000113_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000113_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "405.4"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported mean distance from the center of the scene to the centroids of all destroyed structures within 364.9 and 445.9 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

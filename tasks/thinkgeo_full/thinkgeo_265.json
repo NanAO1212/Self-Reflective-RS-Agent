@@ -1,0 +1,46 @@
+{
+  "task_id": "thinkgeo_265",
+  "query": "In this aerial image, how many beach-volleyball (sand) courts are visible?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0194.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0194.png",
+        "text": "sandy area for beach volleyball",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0194.png",
+        "text": "beach volleyball court",
+        "bbox": "(512, 5, 822, 167)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 3 beach-volleyball courts visible in the image.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "3",
+        "three"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 3 beach-volleyball courts visible in the image?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response specify that the counted courts are beach-volleyball (sand) courts?",
+      "answer": "Yes"
+    }
+  ]
+}

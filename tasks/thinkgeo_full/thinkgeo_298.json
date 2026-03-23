@@ -1,0 +1,49 @@
+{
+  "task_id": "thinkgeo_298",
+  "query": "Determine the number of lanes for all bridges in the image.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\highway_bridge1.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\highway_bridge1.jpg",
+        "text": "bridge",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\highway_bridge1.jpg",
+        "bbox": "(230, 260, 600, 400)",
+        "attribute": "number of lanes"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\highway_bridge1.jpg",
+        "bbox": "(260, 460, 630, 580)",
+        "attribute": "number of lanes"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Both bridges in the image have 2 lanes each.",
+  "gt_answer": [
+    "two bridges with two lanes each"
+  ],
+  "evaluation": [
+    {
+      "question": "Are there two bridges in the image?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does each identified bridge have 2 lanes?",
+      "answer": "Yes"
+    }
+  ]
+}

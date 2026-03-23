@@ -1,0 +1,51 @@
+{
+  "task_id": "thinkgeo_258",
+  "query": "Using a ground sampling distance (GSD) of 0.514 meters per pixel, compute the center to center distance in meters between tennis court and baseball diamond",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0150.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0150.png",
+        "text": "baseball diamond",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0150.png",
+        "text": "tennis court",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(( (486+527)/2 - (360+449)/2 )**2 + ( (173+223)/2 - (262+356)/2 )**2 )**0.5 * 0.514"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The center-to-center distance between the tennis court and the baseball diamond is approximately 70.95 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "70.95",
+        "70.9",
+        "70",
+        "71"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported distance within the range of 63.855 to 78.045 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

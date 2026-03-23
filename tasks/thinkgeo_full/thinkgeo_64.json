@@ -1,0 +1,66 @@
+{
+  "task_id": "thinkgeo_64",
+  "query": "Given dimensions of image, 1024x1024, Divide the image into 4 quadrants zone and tell which zone has more destroyed buildings, example top-left.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000159_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\n\ndef solution():\n    w, h = 1024, 1024\n    return str({\n        'top-left': (0, 0, w//2, h//2),\n        'top-right': (w//2, 0, w, h//2),\n        'bottom-left': (0, h//2, w//2, h),\n        'bottom-right': (w//2, h//2, w, h)\n    })\n```"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000159_post_disaster.png",
+        "text": "destroyed building",
+        "bbox": "(0, 0, 512, 512)"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000159_post_disaster.png",
+        "text": "destroyed building",
+        "bbox": "(512, 0, 1024, 512)"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000159_post_disaster.png",
+        "text": "destroyed building",
+        "bbox": "(0, 512, 512, 1024)"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000159_post_disaster.png",
+        "text": "destroyed building",
+        "bbox": "(512, 512, 1024, 1024)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The bottom-right quadrant has the most destroyed buildings, with a total of 13.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "bottom-right"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the bottom-right quadrant reported as having the most destroyed buildings?",
+      "answer": "Yes"
+    }
+  ]
+}

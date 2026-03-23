@@ -1,0 +1,50 @@
+{
+  "task_id": "thinkgeo_193",
+  "query": "Are both airplanes in the same direction?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\005.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\005.jpg",
+        "text": "airplane",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\005.jpg",
+        "bbox": "(401, 596, 443, 636)",
+        "attribute": "orientation"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\005.jpg",
+        "bbox": "(606, 138, 668, 199)",
+        "attribute": "orientation"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "No, both airplanes are not facing the same direction.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "No"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are the two airplanes explicitly stated as not facing the same direction in the response?",
+      "answer": "Yes"
+    }
+  ]
+}

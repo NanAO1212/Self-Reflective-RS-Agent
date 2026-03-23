@@ -1,0 +1,54 @@
+{
+  "task_id": "thinkgeo_371",
+  "query": "Describe the change in pre and post images. If two rescue team per building, then how many teams need to be deployed in the region to help the disaster victims?.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000127_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000127_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000127_post_disaster.png",
+        "text": "Describe the change in pre and post images."
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000127_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000127_post_disaster.png",
+        "text": "Count the total number of buildings in the post-disaster image."
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "2*38"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Severe flooding has resulted in all buildings being inundated in the post-disaster scenario. A total of 76 rescue teams are needed to assist victims across 38 damaged buildings.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000127_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000127_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "76"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the number of damaged buildings reported in the response within the acceptable range of 34.2 to 41.8?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the total number of rescue teams reported in the response within the acceptable range of 68.4 to 83.6?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "task_id": "thinkgeo_57",
+  "query": "What is the distance between the largest destroyed building and the smallest destroyed building? GSD 1.25m/px.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\midwest-flooding_00000287_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\midwest-flooding_00000287_post_disaster.png",
+        "text": "largest destroyed building",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\midwest-flooding_00000287_post_disaster.png",
+        "text": "smallest destroyed building",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((226 + 371) / 2), round((713 + 1022) / 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((392 + 414) / 2), round((427 + 444) / 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((((403 - 298)**2 + (436 - 868)**2)**0.5) * 1.25)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The distance between the largest and smallest destroyed buildings is approximately 556 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "556"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the computed distance within the range of 500.4 to 611.6 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

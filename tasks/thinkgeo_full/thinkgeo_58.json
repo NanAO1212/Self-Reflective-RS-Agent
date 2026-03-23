@@ -1,0 +1,40 @@
+{
+  "task_id": "thinkgeo_58",
+  "query": "Can you plot the ratio of destroyed buildings to major-damage buildings in the image?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\palu-tsunami_00000032_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\palu-tsunami_00000032_post_disaster.png",
+        "text": "destroyed building"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\palu-tsunami_00000032_post_disaster.png",
+        "text": "major-damage building"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "60 / 16"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "Plot",
+      "tool_type": "operation",
+      "input": {
+        "command": "import matplotlib.pyplot as plt\n\nlabels = ['Destroyed', 'Major-Damage']\nvalues = [60, 16]\n\nplt.figure(figsize=(6,4))\nplt.bar(labels, values, color=['red', 'orange'])\nplt.title('Building Damage Ratio')\nplt.ylabel('Number of Buildings')\nplt.grid(axis='y')\nplt.tight_layout()\nplt.show()"
+      }
+    }
+  ],
+  "final_answer": ""
+}

@@ -1,0 +1,48 @@
+{
+  "task_id": "thinkgeo_348",
+  "query": "If one inspection team can survey five damaged buildings per day, how many teams are required to inspect every building flagged as damaged in the post-event image?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000326_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000326_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000326_post_disaster.png",
+        "text": "How many buildings are damaged (minor-damage, major-damage, destroyed) in the post-disaster image?"
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\nimport math\ndef solution():\n    return math.ceil(5 / 5)\n```"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Total damaged buildings to inspect: 5.\n Inspection capacity per team per day: 5 buildings.\n Required inspection teams: **1**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000326_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000326_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "5"
+      ],
+      [
+        "1"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there 5 total damaged buildings to inspect stated in the response?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response concludes that 1 inspection team is required?",
+      "answer": "Yes"
+    }
+  ]
+}

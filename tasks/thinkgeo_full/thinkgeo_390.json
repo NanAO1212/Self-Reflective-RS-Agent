@@ -1,0 +1,49 @@
+{
+  "task_id": "thinkgeo_390",
+  "query": "What proportion of all buildings visible in the pre-event image are classified as major damaged in the post-event image?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000396_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000396_pre_disaster.png",
+        "text": "How many total buildings are visible in the pre-disaster image?"
+      }
+    },
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000396_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000396_post_disaster.png",
+        "text": "How many buildings are classified as major-damage in the post-disaster image?"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "10 / 10"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The proportion of all pre-event buildings classified as major damaged in the post-event image is **1.0** (i.e., 100%).",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000396_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000396_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1.0"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the proportion of all pre-event buildings classified as major damaged reported as 1 or 100%?",
+      "answer": "Yes"
+    }
+  ]
+}

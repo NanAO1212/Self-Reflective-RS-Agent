@@ -1,0 +1,28 @@
+{
+  "task_id": "thinkgeo_326",
+  "query": "Locate the domestic garbage in the image and draw a labeled bounding box over it.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40040.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40040.jpg",
+        "text": "domestic garbage",
+        "top1": true
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40040.jpg",
+        "bbox": "(179, 350, 291, 429)",
+        "label": "domestic garbage"
+      }
+    }
+  ],
+  "final_answer": ""
+}

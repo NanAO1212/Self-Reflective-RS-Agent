@@ -1,0 +1,53 @@
+{
+  "task_id": "thinkgeo_63",
+  "query": "What is the distance between the two destroyed buildings in the image? GSD 1.88m/px.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000143_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000143_post_disaster.png",
+        "text": "destroyed building",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((982 + 1022) / 2), round((744 + 784) / 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((999 + 1022) / 2), round((721 + 749) / 2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((((1011 - 1002)**2 + (735 - 764)**2)**0.5) * 1.88)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The distance between the two destroyed buildings is approximately 56 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "56"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the computed distance within the range of 50.4 to 61.6 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

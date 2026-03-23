@@ -1,0 +1,45 @@
+{
+  "task_id": "thinkgeo_380",
+  "query": "Estimate the total ground area in square meters lost to destroyed buildings by comparing the pre-storm and post-storm building areas. Given GSD=3.024613",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000225_pre_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ChangeDetection",
+      "tool_type": "perception",
+      "input": {
+        "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000225_pre_disaster.png",
+        "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000225_post_disaster.png",
+        "text": "Identify all destroyed buildings in the post image."
+      }
+    },
+    {
+      "tool_name": "Solver",
+      "tool_type": "logic",
+      "input": {
+        "command": "```python\ndef solution():\n    destroyed_boxes=[(225, 369, 236, 389), (253, 351, 277, 374), (114, 315, 133, 335), (23, 138, 34, 148), (243, 76, 276, 105), (238, 47, 260, 70), (261, 46, 301, 69), (172, 122, 182, 133), (44, 527, 58, 536)]\n    return str(round(sum((x1 - x0) * (y1 - y0) for (x0, y0, x1, y1) in destroyed_boxes) * (3.024613**2), 2))\n```"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The total estimated ground area lost to destroyed buildings is **35504.49 square meters**.",
+  "pre_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000225_pre_disaster.png",
+  "post_image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-harvey_00000225_post_disaster.png",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "35504.49"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the total estimated ground area lost to destroyed buildings within the acceptable range of 31954.04 to 39054.94 square meters?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response report the lost area in square meters as requested?",
+      "answer": "Yes"
+    }
+  ]
+}

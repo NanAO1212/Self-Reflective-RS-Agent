@@ -1,0 +1,28 @@
+{
+  "task_id": "thinkgeo_177",
+  "query": "Detect the house with elongated white object behind the northwest house, and draw box over it.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\68.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\68.png",
+        "text": "house with elongated white object behind the northwest house",
+        "top1": true
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\68.png",
+        "bbox": "(143, 193, 271, 327)",
+        "annotation": "house with white object behind"
+      }
+    }
+  ],
+  "final_answer": ""
+}

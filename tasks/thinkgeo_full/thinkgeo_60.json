@@ -1,0 +1,41 @@
+{
+  "task_id": "thinkgeo_60",
+  "query": "Describe the image by telling the number of destroyed buildings.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000089_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "ImageDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000089_post_disaster.png"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000089_post_disaster.png",
+        "text": "destroyed building"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "This image shows the devastating aftermath of a wildfire. A total of 170 buildings have been destroyed, highlighting the severe impact on the area.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "170"
+      ],
+      [
+        "This image shows the devastating aftermath of a wildfire"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported number of destroyed buildings within the acceptable range of 153 to 187 buildings?",
+      "answer": "Yes"
+    }
+  ]
+}

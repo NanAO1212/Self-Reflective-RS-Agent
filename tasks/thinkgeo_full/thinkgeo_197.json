@@ -1,0 +1,54 @@
+{
+  "task_id": "thinkgeo_197",
+  "query": "Detect the largest plane on the runway, and estimate the orientation (tail-to-nose heading in degrees relative to the north).",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\012.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\012.jpg",
+        "text": "airplane",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(587.0-537.0)*(209.0-163.0),(376.0-332.0)*(735.0-686.0)"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\012.jpg",
+        "bbox": "(537.0, 163.0, 587.0, 209.0)",
+        "attribute": "orientation of airplane in degrees"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The largest airplane on the runway has an orientation of approximately 45 degrees clockwise from the north (tail-to-nose heading).",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "45",
+        "northeast",
+        "NE"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the response specifying that the orientation is a tail-to-nose heading relative to north?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the estimated orientation within the acceptable range of 40.5 to 49.5 degrees?",
+      "answer": "Yes"
+    }
+  ]
+}

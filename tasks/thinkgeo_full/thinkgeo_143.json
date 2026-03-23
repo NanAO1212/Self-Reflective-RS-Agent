@@ -1,0 +1,35 @@
+{
+  "task_id": "thinkgeo_143",
+  "query": "Identify destroyed buildings in the image and compute average area in square meters, assuming a ground sampling distance (GSD) of 0.5 meters/pixel. Finally, annotate the image with this average area value.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34684766_36662066.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34684766_36662066.jpg",
+        "text": "destroyed building",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(684 - 507) * (707 - 544) * 0.5 * 0.5"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "AddText",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\34684766_36662066.jpg",
+        "text": "Avg Area: 3752.25 sqm",
+        "position": "(507, 544)"
+      }
+    }
+  ],
+  "final_answer": ""
+}

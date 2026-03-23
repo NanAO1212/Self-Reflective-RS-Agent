@@ -1,0 +1,81 @@
+{
+  "task_id": "thinkgeo_334",
+  "query": "Detect the domestic garbage, all construction waste regions, and agriculture forestry, and compute the area in square meters for each using a ground sampling distance (GSD) of 0.5 m/px.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\NI4401.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\NI4401.jpg",
+        "text": "domestic garbage",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(228 - 156) * (843 - 773) * 0.5 * 0.5"
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\NI4401.jpg",
+        "text": "construction waste",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((308 - 176)*(597 - 502) + (704 - 446)*(374 - 174) + (763 - 556)*(816 - 637)) * 0.5 * 0.5"
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\NI4401.jpg",
+        "text": "agriculture forestry",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(102 - 16) * (499 - 419) * 0.5 * 0.5"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The estimated areas are:\n- Domestic garbage: **1260.0 m sq**\n- Construction waste (all regions combined): **42305.0 m sq**\n- Agriculture forestry: **3440.0 m sq**",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1260.0",
+        "42305.0",
+        "3440.0"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the estimated area for domestic garbage within the acceptable range of 1134.0 to 1386.0 m sq?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the estimated area for construction waste within the acceptable range of 38074.5 to 46535.5 m sq?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the estimated area for agriculture forestry within the acceptable range of 3096.0 to 3784.0 m sq?",
+      "answer": "Yes"
+    }
+  ]
+}

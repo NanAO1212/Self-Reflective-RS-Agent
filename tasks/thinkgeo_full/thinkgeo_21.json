@@ -1,0 +1,28 @@
+{
+  "task_id": "thinkgeo_21",
+  "query": "Can you draw a single box around the largest non-flooded houses?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7323.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7323.jpg",
+        "text": "largest non-flooded house",
+        "top1": true
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7323.jpg",
+        "bbox": "(466, 2300, 1076, 3047)",
+        "annotation": "Largest Non-Flooded House"
+      }
+    }
+  ],
+  "final_answer": ""
+}

@@ -1,0 +1,28 @@
+{
+  "task_id": "thinkgeo_80",
+  "query": "Locate the largest damaged building and draw box over it.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000384_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000384_post_disaster.png",
+        "text": "largest damaged building",
+        "top1": true
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-florence_00000384_post_disaster.png",
+        "bbox": "(61, 551, 210, 613)",
+        "annotation": "largest damaged building"
+      }
+    }
+  ],
+  "final_answer": ""
+}

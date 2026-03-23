@@ -1,0 +1,55 @@
+{
+  "task_id": "thinkgeo_93",
+  "query": "How many vehicles are heading in the same direction?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0044.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0044.png",
+        "text": "car",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0044.png",
+        "bbox": "(421, 156, 493, 219)",
+        "attribute": "heading direction of the car"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0044.png",
+        "bbox": "(316, 262, 370, 313)",
+        "attribute": "heading direction of the car"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Yes, both vehicles are heading in the same direction — southwest.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "2 vehicles",
+        "two vehicles"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "There are 2 vehicles in the image?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are both vehicles heading in the same direction?",
+      "answer": "Yes"
+    }
+  ]
+}

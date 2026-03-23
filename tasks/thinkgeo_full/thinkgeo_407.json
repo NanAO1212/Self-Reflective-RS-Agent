@@ -1,0 +1,55 @@
+{
+  "task_id": "thinkgeo_407",
+  "query": "From the segmented region of the vehicle and a GSD of 0.1403 m/pixel, derive the pixel dimensions of its width and length assuming a 2:1 length-to-width ratio.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0206.png",
+  "steps": [
+    {
+      "tool_name": "SegmentObjectPixels",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0206.png",
+        "text": "vehicle",
+        "flag": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "math.sqrt(409/2)"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "math.sqrt(409/2) * 2"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": " Pixel width ≈ **14.30** px.\n Pixel length ≈ **28.61** px.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "14.30 px",
+        "28.61 px"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the pixel width of vehicle approximately within the acceptable range of 12.87 to 15.73 px ?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the pixel length of vehicle within the acceptable range of 25.75 to 31.47 px ?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the pixel length maintain a 2:1 length-to-width ratio relative to the pixel width?",
+      "answer": "Yes"
+    }
+  ]
+}

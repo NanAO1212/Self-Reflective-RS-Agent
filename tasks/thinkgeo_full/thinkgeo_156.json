@@ -1,0 +1,46 @@
+{
+  "task_id": "thinkgeo_156",
+  "query": "Detect the house near to red car. How many other car are next to red car?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\1.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\1.png",
+        "text": "house near red car",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\1.png",
+        "text": "car near red car",
+        "top1": true
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The house near the red car is at (301, 487, 409, 576), and there is another car nearby at (338, 462, 363, 491). So yes, there is another car next to the red car.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "1 car",
+        "one car"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the house near the red car?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is it stated that there is a car next to the red car?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "task_id": "thinkgeo_164",
+  "query": "Is tennis court closer to north side or south side zebra crossings, assuming GSD 0.8m/px.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\2085.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\2085.png",
+        "text": "tennis court",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\2085.png",
+        "text": "zebra crossing north side",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\2085.png",
+        "text": "zebra crossing south side",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(((37+88)/2 - (167+192)/2)**2 + ((113+201)/2 - (0+22)/2)**2)**0.5 * 0.8"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(((37+88)/2 - (220+243)/2)**2 + ((113+201)/2 - (533+587)/2)**2)**0.5 * 0.8"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The tennis court is closer to the north side zebra crossing.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "north side"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Does the response explicitly state that the tennis court is closer to the north side zebra crossing?",
+      "answer": "Yes"
+    }
+  ]
+}

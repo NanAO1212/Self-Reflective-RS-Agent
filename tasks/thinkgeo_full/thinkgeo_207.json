@@ -1,0 +1,62 @@
+{
+  "task_id": "thinkgeo_207",
+  "query": "Determine the orientation angle of basketball courts baseline relative to the north in degrees.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\133.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\133.jpg",
+        "text": "basketball court",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\133.jpg",
+        "bbox": "(259.0, 248.0, 423.0, 350.0)",
+        "attribute": "orientation of basketball baseline relative to the north in degrees"
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\133.jpg",
+        "bbox": "(433.0, 233.0, 536.0, 381.0)",
+        "attribute": "orientation of basketball baseline relative to the north in degrees"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The first basketball court baseline is oriented 90 degrees relative to north, and the second one is oriented 0 degrees relative to north.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "90"
+      ],
+      [
+        "zero",
+        "0"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the orientation angle of the one of the basketball court baseline 90 degrees relative to north?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the orientation angle of the one of the basketball court baseline 0 degrees relative to north?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Does the response specify orientation angles in degrees for two basketball courts?",
+      "answer": "Yes"
+    }
+  ]
+}

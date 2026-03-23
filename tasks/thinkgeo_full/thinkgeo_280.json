@@ -1,0 +1,42 @@
+{
+  "task_id": "thinkgeo_280",
+  "query": "Identify the designated large parking lot area near the airport and evaluate its current occupancy level, categorizing it as completely full, nearly full, moderately occupied, nearly empty, or empty.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P2220.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P2220.png",
+        "text": "large airport parking lot",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P2220.png",
+        "bbox": "(128,655,674,859)",
+        "attribute": "parking lot occupancy level"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The large parking lot near the airport is moderately occupied.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "moderately occupied",
+        "moderate occupancy"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Does the response state the occupancy level as moderately occupied?",
+      "answer": "Yes"
+    }
+  ]
+}

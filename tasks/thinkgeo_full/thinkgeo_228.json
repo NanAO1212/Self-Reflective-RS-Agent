@@ -1,0 +1,28 @@
+{
+  "task_id": "thinkgeo_228",
+  "query": "Detect ship near the land area and draw box on it.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\295.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\295.jpg",
+        "text": "ship near the land area",
+        "top1": true
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\295.jpg",
+        "bbox": "(232, 374, 271, 412)",
+        "annotation": "ship near land"
+      }
+    }
+  ],
+  "final_answer": "image is generated"
+}

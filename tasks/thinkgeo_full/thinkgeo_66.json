@@ -1,0 +1,53 @@
+{
+  "task_id": "thinkgeo_66",
+  "query": "Is there any damaged building between the no-damage buildings?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\santa-rosa-wildfire_00000204_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000204_post_disaster.png",
+        "text": "no-damage building",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "min(208, 480), min(687, 995), max(236, 497), max(1013, 705)"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\santa-rosa-wildfire_00000204_post_disaster.png",
+        "text": "damaged building",
+        "bbox": "(208, 687, 497, 1013)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Yes, there are 4 damaged buildings located between the no-damage buildings.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "yes",
+        "4 damaged buildings"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there damaged buildings located between the no-damage buildings?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the number of damaged buildings situated between no-damage buildings reported as four?",
+      "answer": "Yes"
+    }
+  ]
+}

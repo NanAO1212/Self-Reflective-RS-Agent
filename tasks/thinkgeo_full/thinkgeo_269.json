@@ -1,0 +1,48 @@
+{
+  "task_id": "thinkgeo_269",
+  "query": "Can you identify the red aircraft sitting in the center of this airport apron? What type and model is it?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0217.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0217.png",
+        "text": "red aircraft at center",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P0217.png",
+        "bbox": "(594, 726, 696, 854)",
+        "attribute": "aircraft type and model"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The red aircraft sitting at the center of the airport apron is a North American Rockwell OV-10 Bronco, a twin-turboprop light attack and observation aircraft.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "North American Rockwell OV-10 Bronco",
+        "OV-10 Bronco",
+        "Bronco",
+        "Rockwell OV-10 Bronco"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are we identifying the red aircraft in the center as the North American Rockwell OV-10 Bronco?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the Bronco mentioned as the red aircraft at the center?",
+      "answer": "Yes"
+    }
+  ]
+}

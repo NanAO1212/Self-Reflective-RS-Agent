@@ -1,0 +1,48 @@
+{
+  "task_id": "thinkgeo_313",
+  "query": "Detect construction waste in the given image and compute its distance from the road based on centroids, assuming 0.5m GSD.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40023.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40023.jpg",
+        "text": "construction waste",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\40023.jpg",
+        "text": "road",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "((((156+373)/2 - (387+477)/2)**2 + ((264+454)/2 - (2+331)/2)**2)**0.5) * 0.5"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The construction waste is approximately 117.27 meters from the road based on centroid distance.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "117.27"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported distance of the construction waste from the road within the range of 105.54 to 128.997 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

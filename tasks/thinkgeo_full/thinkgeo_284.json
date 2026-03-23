@@ -1,0 +1,50 @@
+{
+  "task_id": "thinkgeo_284",
+  "query": "Determine the wingspan of the large airplane located at the top of the image, in meters, rounded to the nearest integer. Use a ground sampling distance (GSD) of 0.1405 meters per pixel.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "text": "large airplane at the top of the image",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "RegionAttributeDescription",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1492.png",
+        "bbox": "(529,241,863,487)",
+        "attribute": "nose direction"
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((863-529) * 0.1405)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The wingspan of the large airplane located at the top of the image is approximately 47 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "47",
+        "47.0",
+        "47.00"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the estimated wingspan of the large airplane within the acceptable range of 42 to 52 meters?",
+      "answer": "Yes"
+    }
+  ]
+}

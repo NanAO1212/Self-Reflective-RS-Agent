@@ -1,0 +1,50 @@
+{
+  "task_id": "thinkgeo_163",
+  "query": "How many houses are having pathway directly connected to the cul-de-sac, and how many parking spaces adjacent to these houses are occupied?",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\20.png",
+  "steps": [
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\20.png",
+        "text": "house with pathway directly connected to cul-de-sac",
+        "bbox": null
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\20.png",
+        "text": "occupied parking space adjacent to those houses",
+        "bbox": null
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There are 3 houses having pathways directly connected to the cul-de-sac, and 3 of their adjacent parking spaces are occupied.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "3 houses",
+        "three houses"
+      ],
+      [
+        "3 parking spaces",
+        "three parking spaces"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly 3 houses having pathways directly connected to the cul-de-sac?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Are there exactly 3 parking spaces adjacent to these houses that are occupied?",
+      "answer": "Yes"
+    }
+  ]
+}

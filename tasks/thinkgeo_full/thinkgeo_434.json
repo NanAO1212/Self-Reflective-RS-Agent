@@ -1,0 +1,40 @@
+{
+  "task_id": "thinkgeo_434",
+  "query": "Segment all vehicles, convert its total pixel area to m-sq (GSD = 0.1393 m/px)",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1099.png",
+  "steps": [
+    {
+      "tool_name": "SegmentObjectPixels",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\P1099.png",
+        "text": "vehicle",
+        "flag": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "2092 * (0.1393**2)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "Total real-world area in square meters is 40.59.",
+  "gsd_m_per_px": 0.1393,
+  "gt_answer": {
+    "whitelist": [
+      [
+        "40.59"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the reported area within the acceptable range of 36.53 to 44.65 square meters?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "task_id": "thinkgeo_20",
+  "query": "How many cars are parked around the 3m radius of non-flooded house? (GSD : 0.015 m/px)",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7294.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7294.jpg",
+        "text": "non-flooded house",
+        "top1": true
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "round((3968 + 4212) / 2 - 3 / 0.015), round((331 + 661) / 2 - 3 / 0.015), round((3968 + 4212) / 2 + 3 / 0.015), round((331 + 661) / 2 + 3 / 0.015)"
+      }
+    },
+    {
+      "tool_name": "CountGivenObject",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\7294.jpg",
+        "text": "car",
+        "bbox": "(3884, 127, 4296, 865)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "There is 2 car parked within a 3-meter radius of the non-flooded house.",
+  "gsd_m_per_px": 0.015,
+  "gt_answer": {
+    "whitelist": [
+      [
+        "2 cars",
+        "two cars"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Are there exactly two cars parked within a 3-meter radius of the non-flooded house?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the house described as non-flooded in the response?",
+      "answer": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "task_id": "thinkgeo_234",
+  "query": "Detect the car parked near the house, and draw box over it.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\369.jpg",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\369.jpg",
+        "text": "car parked near the house",
+        "top1": true
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "tool_name": "DrawBox",
+      "tool_type": "operation",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\369.jpg",
+        "bbox": "(724, 323, 773, 384)",
+        "annotation": "car"
+      }
+    }
+  ],
+  "final_answer": ""
+}

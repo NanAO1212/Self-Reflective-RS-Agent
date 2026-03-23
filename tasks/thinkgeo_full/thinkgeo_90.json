@@ -1,0 +1,46 @@
+{
+  "task_id": "thinkgeo_90",
+  "query": "Estimate the damaged buildings distance from the road (709, 258). GSD 2.07m/px.",
+  "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000342_post_disaster.png",
+  "steps": [
+    {
+      "tool_name": "TextToBbox",
+      "tool_type": "perception",
+      "input": {
+        "image": "E:\\Agentic remote sensing reasoning\\thinkgeo\\ThinkGeo\\opencompass\\data\\ThinkGeo_dataset\\image\\hurricane-michael_00000342_post_disaster.png",
+        "text": "major-damaged building",
+        "top1": false
+      }
+    },
+    {
+      "tool_name": "Calculator",
+      "tool_type": "logic",
+      "input": {
+        "expression": "(((604 - 709)**2 + (237 - 258)**2)**0.5 * 2.07, ((625.5 - 709)**2 + (267.5 - 258)**2)**0.5 * 2.07)"
+      }
+    }
+  ],
+  "outputs": [],
+  "final_answer": "The distances from the two damaged buildings to the road are approximately 219.87 meters and 174.13 meters.",
+  "gt_answer": {
+    "whitelist": [
+      [
+        "219.87"
+      ],
+      [
+        "174.13"
+      ]
+    ],
+    "blacklist": null
+  },
+  "evaluation": [
+    {
+      "question": "Is the first distance of 219.87 meters within the acceptable range of 197.88 to 241.86 meters ?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Is the second distance of 174.13 meters within the acceptable range of 156.72 to 191.54 meters ?",
+      "answer": "Yes"
+    }
+  ]
+}
